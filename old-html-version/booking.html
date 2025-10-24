@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Book a Viewing — M25</title>
+<link rel="icon" href="data:,">
+<style>
+  body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:#0c0f14;color:#e9eef7}
+  .wrap{max-width:900px;margin:0 auto;padding:24px}
+  .card{background:#161b26;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  h1{font-size:28px;margin:0 0 14px} p.muted{color:#9db0cc;margin-top:0}
+  form{display:grid;gap:14px}
+  input,textarea,select{padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:#fff}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:720px){.row{grid-template-columns:1fr}}
+  .btn{padding:12px 18px;border-radius:12px;background:#4aa3ff;color:#001324;font-weight:700;border:1px solid rgba(255,255,255,.06);cursor:pointer}
+  .btn.secondary{background:transparent;color:#e9eef7;border:1px solid rgba(255,255,255,.2)}
+  .topbar{padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(12,15,20,.6);backdrop-filter:blur(10px)}
+  .topbar a{color:#9db0cc;text-decoration:none}
+</style>
+</head>
+<body>
+  <div class="topbar"><div class="wrap"><a href="index.html">← Back to M25</a></div></div>
+  <div class="wrap">
+    <div class="card">
+      <h1>Book a Viewing</h1>
+      <p class="muted">Pick a preferred date and leave your contacts. When you press <em>Book</em>, your email app will open with all the details pre-filled to <strong>info@m25.ge</strong>.</p>
+      <form id="bookingForm">
+        <div class="row">
+          <input type="date" id="date" required aria-label="Preferred date"/>
+          <input type="time" id="time" aria-label="Preferred time"/>
+        </div>
+        <div class="row">
+          <input type="email" id="email" placeholder="Email" required/>
+          <input type="tel" id="phone" placeholder="Phone number" required/>
+        </div>
+        <textarea id="message" rows="4" placeholder="Notes (company, team size, office type)…"></textarea>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" type="submit">📨 Book</button>
+          <a class="btn secondary" href="index.html">Cancel</a>
+        </div>
+      </form>
+      <p class="muted" style="margin-top:12px">Tip: If you prefer server-side sending, replace the mailto logic in <code>booking.html</code> with your API endpoint.</p>
+    </div>
+  </div>
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const d = document.getElementById('date').value;
+  const t = document.getElementById('time').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const notes = document.getElementById('message').value;
+  const subject = encodeURIComponent('M25 Viewing Request — ' + (d||'date TBD'));
+  const body = encodeURIComponent(
+    'Preferred date: ' + (d||'-') + '\n' +
+    'Preferred time: ' + (t||'-') + '\n' +
+    'Email: ' + email + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Notes: ' + notes + '\n'
+  );
+  // Open the user's email client
+  window.location.href = 'mailto:info@m25.ge?subject=' + subject + '&body=' + body;
+});
+</script>
+</body>
+</html>

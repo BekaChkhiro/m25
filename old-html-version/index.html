@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M25 Business Center — Where Ambition Finds Its Space</title>
+  <style>
+    :root {
+      --bg: #0c0f14;
+      --bg-soft: #121722;
+      --card: #161b26;
+      --text: #e9eef7;
+      --muted: #9db0cc;
+      --brand: #4aa3ff;
+      --accent: #89ffda;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --maxw: 1180px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: linear-gradient(180deg, var(--bg) 0%, #0a0d12 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+    {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      min-height: 360px;
+      max-height: 520px;
+      display: grid;
+      align-items: end;
+      background: #0b0e13;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+  }
+  header.hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url('assets/presentation_p01.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+    }
+  header.hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.35) 65%, rgba(0,0,0,.55) 100%);
+    }
+  header.hero .wrap {
+      position: relative;
+      padding-top: 140px;
+      padding-bottom: 38px;
+    }
+    .badge { display: inline-block; padding: 8px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; color: var(--muted); font-size: 12px; letter-spacing: .3px; }
+    h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.1; margin: 16px 0 8px; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,.5); }
+    .lead { font-size: clamp(16px, 2.6vw, 20px); color: #f4f4f4; text-shadow: 0 2px 5px rgba(0,0,0,.4); max-width: 760px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn {
+      padding: 12px 18px; border-radius: 12px; background: var(--brand); color: #001324;
+      font-weight: 700; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,.06);
+    }
+    .btn.secondary { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.15); }
+    nav.sticky {
+      position: sticky; top: 0; backdrop-filter: blur(10px); background: rgba(12,15,20,.6);
+      border-bottom: 1px solid rgba(255,255,255,.06); z-index: 50;
+    }
+    nav .nav-inner { display: flex; gap: 14px; align-items: center; justify-content: space-between; padding: 12px 0; }
+    nav ul { list-style: none; display: flex; gap: 12px; padding: 0; margin: 0; flex-wrap: wrap; }
+    nav a { color: var(--muted); padding: 8px 10px; border-radius: 8px; }
+    nav a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    section { padding: 64px 0; }
+    h2 { font-size: clamp(28px, 3.4vw, 36px); margin: 0 0 10px; }
+    .sub { color: var(--muted); margin-bottom: 24px; }
+    .grid { display: grid; gap: 18px; }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background: var(--card); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .pill { display: inline-block; background: rgba(137,255,218,.12); color: var(--accent); border: 1px solid rgba(137,255,218,.25); padding: 4px 10px; border-radius: 999px; font-size: 12px; }
+    .two { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+    @media (max-width: 900px) { .two { grid-template-columns: 1fr; } }
+    .gallery {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;
+    }
+    .gallery img {
+      width: 100%; height: 180px; object-fit: cover; border-radius: 14px; border: 1px solid rgba(255,255,255,.09);
+      cursor: pointer; transition: transform .15s ease;
+      background: #0b0e13;
+    }
+    .gallery img:hover { transform: scale(1.02); }
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 100;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 12px; }
+    .floors {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;
+    }
+    .floors .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .map-embed iframe { width: 100%; height: 420px; border: 0; border-radius: 14px; filter: saturate(1.1) contrast(1.05); }
+    footer { padding: 40px 0 60px; color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); }
+    .tiny { font-size: 12px; color: var(--muted); }
+    .tagrow { display: flex; gap: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="wrap" aria-hidden="true" style="padding:0;height:380px;"></div></header>
+
+  <nav class="sticky">
+    <div class="wrap nav-inner">
+      <strong>M25</strong>
+      <ul><li><a href="#about">About</a></li><li><a href="assets/M25-Exclusive-Business-Center.pdf" download>📥 Floor Plans PDF</a></li>
+        <li><a href="#offices">Offices</a></li>
+        <li><a href="#cowork">Co‑Working</a></li>
+        <li><a href="#virtual">Virtual Office</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#plans">Plans</a></li>
+        <li><a href="#renders">Renders</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="about">
+    <div class="wrap two">
+      <div>
+        <h2>About M25</h2>
+        <p class="sub">Two adjoining buildings (Block A — 4 floors, Block B — 7 floors) with <strong>4,500 m²</strong> GLA, premium elevators, floor‑to‑ceiling windows, and generous verandas.</p>
+        <div class="grid cols-3">
+          <div class="card"><div class="pill">GLA</div><h3>4,500 m²</h3><p class="tiny">Flexible modules from 40–300 m²</p></div>
+          <div class="card"><div class="pill">Access</div><h3>Independent</h3><p class="tiny">Separate entry to each section</p></div>
+          <div class="card"><div class="pill">Parking</div><h3>Underground</h3><p class="tiny">Tenant & visitor parking</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Highlights</h3>
+        <ul>
+          <li>Panoramic views over central Tbilisi</li>
+          <li>Eco‑friendly setting and bright, airy interiors</li>
+          <li>Upscale finishes and curated details</li>
+          <li>Meeting rooms, café, gym & wellness, sauna, rooftop restaurant</li>
+        </ul>
+        <div class="tagrow">
+          <span class="pill">Law & Finance</span>
+          <span class="pill">IT & Creative</span>
+          <span class="pill">Diplomatic</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="offices">
+    <div class="wrap">
+      <h2>Offices for Rent</h2>
+      <p class="sub">Modular offices with private kitchens, verandas, and meeting rooms. Ideal for law firms, financial institutions, architects, developers, and IT companies.</p>
+      <div class="grid cols-3">
+        <div class="card"><h3>40–60 m²</h3><p>Private suites ready for compact teams or exec offices.</p></div>
+        <div class="card"><h3>60–150 m²</h3><p>Grow‑ready layouts with boardroom and lounge.</p></div>
+        <div class="card"><h3>150–300 m²</h3><p>Full‑floor presence, kitchen & collaboration zones.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cowork">
+    <div class="wrap">
+      <h2>Co‑Working</h2>
+      <p class="sub">Floor 1 offers up to 60 ergonomic workstations, phone booths, private rooms, and high‑speed connectivity — next to the gym & wellness zone.</p>
+      <div class="grid cols-3">
+        <div class="card"><h3>Phone & Meeting Booths</h3><p>Quick calls or focused 1:1s without distractions.</p></div>
+        <div class="card"><h3>Team Rooms</h3><p>2×14 m² + 1×12 m² — reserve on demand.</p></div>
+        <div class="card"><h3>Community</h3><p>Network with remote pros, startups & creatives.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="virtual">
+    <div class="wrap">
+      <h2>Virtual Office</h2>
+      <p class="sub">Register your company at the prestigious Mtatsminda address, with mail handling, meeting room access, and optional reception.</p>
+      <div class="grid cols-3">
+        <div class="card"><h3>Business Address</h3><p>Use M25 for official registration & branding.</p></div>
+        <div class="card"><h3>Mail & Parcels</h3><p>Receive, store, and forward securely.</p></div>
+        <div class="card"><h3>On‑Demand Meetings</h3><p>Host clients in professional rooms.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="wrap">
+      <h2>Amenities</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>Ground‑Floor Café</h3><p>173 m² / ~70 seats for quick, healthy dining and informal meetings.</p></div>
+        <div class="card"><h3>Gym & Wellness</h3><p>145 m² gym, sauna, massage & yoga studio with changing rooms.</p></div>
+        <div class="card"><h3>Rooftop Restaurant</h3><p>360+ m² dining & terrace with sweeping skyline views — ideal for events.</p></div>
+      </div>
+    </div>
+  </section>
+
+<section id="floorplans" class="section">
+  <div class="container">
+    <div id="pdf-floorplans" class="plans-grid pdf-grid" aria-live="polite"></div>
+    <div class="actions">
+      <a class="btn btn-secondary" href="assets/M25-Exclusive-Business-Center.pdf" download>
+        <i class="fa-solid fa-file-arrow-down"></i> Download Full Brochure (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+  <section id="plans">
+    <div class="wrap">
+      <h2>Floor Plans</h2>
+      <p class="sub">Browse plans from the Detailed Project documentation. Click any image to zoom.</p>
+      <div class="gallery" id="plansGallery"><figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0009.jpg" alt="Ground Floor Plan"/><figcaption>Ground Floor Plan</figcaption></figure>
+<figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0012.jpg" alt="1st Floor Plan"/><figcaption>1st Floor Plan</figcaption></figure>
+<figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0014.jpg" alt="2nd Floor Plan"/><figcaption>2nd Floor Plan</figcaption></figure>
+<figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0016.jpg" alt="4th Floor Plan"/><figcaption>4th Floor Plan</figcaption></figure>
+<figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0017.jpg" alt="5th Floor Plan"/><figcaption>5th Floor Plan</figcaption></figure>
+<figure class="card"><img src="assets/M25 EXCLUSIVE BUSINESS CENTER_page-0018.jpg" alt="6th Floor Plan"/><figcaption>6th Floor Plan</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section id="renders">
+    <div class="wrap">
+      <h2>Renders & Visuals</h2>
+      <p class="sub">Selected visuals from the M25 presentation.</p>
+      <div class="gallery" id="rendersGallery"></div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="wrap">
+      <h2>Location</h2>
+      <p class="sub">Mtatsminda N 25, Mtatsminda District — minutes to Rustaveli Ave., Liberty Square, the Opera & Ballet Theatre, and the Funicular.</p>
+      <div class="map-embed card">
+        <iframe src="https://www.google.com/maps?q=Mtatsminda%2025%2C%20Tbilisi%2C%20Georgia&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="two">
+        <div>
+          <p><strong>Commercial Manager:</strong> Nina Gibbons</p>
+          <p>Mobile: +995 514 01 22 23 • WhatsApp: +44 7767 701854<br/>Email: <a href="mailto:info@m25.ge">info@m25.ge</a></p>
+          <p class="tiny">Limited availability. Lease allocations June–July 2025. Completion August 2025.</p>
+        </div>
+        <form class="card" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+          <h3>Book a Viewing</h3>
+          <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr">
+            <input required placeholder="First name" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:var(--text)"/>
+            <input required placeholder="Last name" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:var(--text)"/>
+          </div>
+          <div style="display:grid;gap:10px;margin-top:10px">
+            <input type="email" required placeholder="Email" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:var(--text)"/>
+            <input placeholder="Company" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:var(--text)"/>
+            <textarea placeholder="Message" rows="4" style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:#0f131b;color:var(--text)"></textarea>
+            <button class="btn" type="submit">Send Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p class="tiny">© 2025 M25 Business Center. All rights reserved. Documentation excerpts integrated for preview purposes.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightboxImg" alt="Preview"/>
+  </div>
+
+  <script>
+    const ASSETS_BASE = "assets/";
+    const GALLERY_DATA = {"floorPlans": [], "renders": ["render_p097.jpg", "render_p098.jpg", "render_p099.jpg", "render_p100.jpg", "render_p101.jpg", "render_p102.jpg", "render_p103.jpg", "render_p104.jpg", "render_p105.jpg", "render_p106.jpg", "render_p107.jpg", "render_p108.jpg", "render_p109.jpg", "render_p110.jpg", "render_p111.jpg", "render_p112.jpg", "render_p113.jpg", "render_p114.jpg", "render_p115.jpg", "render_p116.jpg", "render_p117.jpg", "render_p118.jpg", "render_p119.jpg", "render_p120.jpg", "render_p121.jpg", "render_p122.jpg", "render_p123.jpg", "render_p124.jpg", "render_p125.jpg", "render_p126.jpg", "render_p127.jpg", "render_p128.jpg", "render_p129.jpg", "render_p130.jpg", "render_p131.jpg", "render_p132.jpg", "render_p133.jpg", "render_p134.jpg", "render_p135.jpg", "render_p136.jpg", "render_p137.jpg", "render_p138.jpg", "render_p139.jpg", "render_p140.jpg", "render_p141.jpg", "render_p142.jpg", "render_p143.jpg", "render_p144.jpg", "render_p145.jpg", "render_p146.jpg", "render_p147.jpg", "render_p148.jpg", "render_p149.jpg", "render_p150.jpg", "render_p151.jpg", "render_p152.jpg", "render_p153.jpg", "render_p154.jpg", "render_p155.jpg", "render_p156.jpg", "render_p157.jpg", "render_p158.jpg", "render_p159.jpg", "render_p160.jpg", "render_p161.jpg", "render_p162.jpg", "render_p163.jpg", "render_p164.jpg", "render_p165.jpg", "render_p166.jpg", "render_p167.jpg", "render_p168.jpg", "render_p169.jpg", "render_p170.jpg", "render_p171.jpg", "render_p172.jpg", "render_p173.jpg", "render_p174.jpg", "render_p175.jpg", "render_p176.jpg", "render_p177.jpg", "render_p178.jpg", "render_p179.jpg", "render_p180.jpg", "render_p181.jpg", "render_p182.jpg", "render_p183.jpg", "render_p184.jpg", "render_p185.jpg", "render_p186.jpg", "render_p187.jpg", "render_p188.jpg"]};
+
+    function buildGallery(id, images) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      images.forEach(name => {
+        const img = document.createElement('img');
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.src = ASSETS_BASE + name;
+        img.alt = name.replace(/_/g, ' ');
+        img.addEventListener('click', () => openLightbox(img.src));
+        el.appendChild(img);
+      });
+      if (images.length === 0) {
+        el.innerHTML = '<div class="card">No images available in this build. You can regenerate after enabling PDF rendering.</div>';
+      }
+    }
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      lb.classList.add('open');
+    }
+
+    buildGallery('plansGallery', GALLERY_DATA.floorPlans);
+    buildGallery('rendersGallery', GALLERY_DATA.renders);
+  </script>
+</body>
+</html>
+
+
+
+
