@@ -1,4 +1,4 @@
-import type { GalleryImage } from '@types/index'
+import type { GalleryImage } from '@/types'
 
 // Floor Plans
 export const floorPlanImages: GalleryImage[] = [

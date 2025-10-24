@@ -1,4 +1,4 @@
-import type { OfficeSize } from '@types/index'
+import type { OfficeSize } from '@/types'
 
 export const officeSizes: OfficeSize[] = [
   {

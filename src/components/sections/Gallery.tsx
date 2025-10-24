@@ -5,7 +5,7 @@ import 'yet-another-react-lightbox/styles.css'
 import { Container, Badge } from '@components/ui'
 import { ZoomIn } from 'lucide-react'
 import { floorPlanImages, presentationImages, renderImages } from '@data/galleries'
-import type { GalleryImage } from '@types/index'
+import type { GalleryImage } from '@/types'
 
 type GalleryFilter = 'all' | 'plan' | 'presentation' | 'render'
 

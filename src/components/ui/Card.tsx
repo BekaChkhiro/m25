@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes } from 'react'
+import { forwardRef, type HTMLAttributes } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/utils/cn'
 
@@ -15,8 +15,9 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       : 'bg-card border border-white/10 shadow-card hover:border-brand/30 hover:shadow-glow hover:-translate-y-1'
 
     if (animate) {
+      const MotionDiv = motion.div as any
       return (
-        <motion.div
+        <MotionDiv
           ref={ref}
           className={cn(baseClasses, glassClasses, className)}
           whileHover={{ y: -4 }}
@@ -24,7 +25,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
           {...props}
         >
           {children}
-        </motion.div>
+        </MotionDiv>
       )
     }
 

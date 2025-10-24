@@ -1,4 +1,4 @@
-import type { Amenity } from '@types/index'
+import type { Amenity } from '@/types'
 
 export const amenities: Amenity[] = [
   {

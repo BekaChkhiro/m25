@@ -1,4 +1,4 @@
-import { forwardRef, ButtonHTMLAttributes } from 'react'
+import { forwardRef, type ButtonHTMLAttributes } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/utils/cn'
 
@@ -24,8 +24,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     if (animate) {
+      const MotionButton = motion.button as any
       return (
-        <motion.button
+        <MotionButton
           ref={ref}
           className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
           whileHover={{ scale: 1.02 }}
@@ -34,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {...props}
         >
           {children}
-        </motion.button>
+        </MotionButton>
       )
     }
 

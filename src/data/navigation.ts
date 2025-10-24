@@ -1,4 +1,4 @@
-import type { NavigationItem } from '@types/index'
+import type { NavigationItem } from '@/types'
 
 export const navigationItems: NavigationItem[] = [
   { id: 'about', label: 'About', href: '#about' },

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Container, Card, Button, Input } from '@components/ui'
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
-import type { ContactFormData } from '@types/index'
+import type { ContactFormData } from '@/types'
 
 const contactSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),

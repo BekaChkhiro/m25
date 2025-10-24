@@ -58,7 +58,7 @@ export const Amenities = () => {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {amenities.map((amenity, index) => {
+          {amenities.map((amenity) => {
             const Icon = iconMap[amenity.id as keyof typeof iconMap]
             return (
               <motion.div key={amenity.id} variants={cardVariants}>
