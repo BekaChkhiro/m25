@@ -29,9 +29,22 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <MotionButton
           ref={ref}
           className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: variant === 'primary'
+              ? '0 10px 40px rgba(74, 163, 255, 0.4)'
+              : '0 10px 40px rgba(74, 163, 255, 0.2)',
+            y: -2
+          }}
+          whileTap={{
+            scale: 0.95,
+            y: 0
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 400,
+            damping: 17
+          }}
           {...props}
         >
           {children}

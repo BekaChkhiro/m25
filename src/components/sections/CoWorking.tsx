@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Container, Card, Button } from '@components/ui'
+import { Container, Card, Button, GlowingBadge } from '@components/ui'
 import { Users, Wifi, Coffee, Calendar } from 'lucide-react'
 
 const features = [
@@ -95,8 +95,29 @@ export const CoWorking = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative flex flex-col items-center"
         >
-          <Card className="glass text-center p-8 md:p-12">
+          {/* Glowing availability badge - Centered above card */}
+          <motion.div
+            initial={{ opacity: 0, y: -30, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+            transition={{
+              duration: 0.6,
+              delay: 0.6,
+              type: 'spring',
+              stiffness: 200,
+              damping: 15
+            }}
+            className="mb-6 md:mb-8"
+          >
+            <div className="relative">
+              {/* Glow backdrop for emphasis */}
+              <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full scale-150" />
+              <GlowingBadge count={10} className="relative" />
+            </div>
+          </motion.div>
+
+          <Card className="glass text-center p-8 md:p-12 relative overflow-visible w-full">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Starting from <span className="gradient-text">$150/month</span>
             </h3>

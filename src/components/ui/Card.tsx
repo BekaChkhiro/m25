@@ -20,8 +20,17 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         <MotionDiv
           ref={ref}
           className={cn(baseClasses, glassClasses, className)}
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.2 }}
+          whileHover={{
+            y: -8,
+            scale: 1.02,
+            boxShadow: '0 20px 60px rgba(74, 163, 255, 0.15)',
+            borderColor: 'rgba(74, 163, 255, 0.3)'
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 300,
+            damping: 20
+          }}
           {...props}
         >
           {children}

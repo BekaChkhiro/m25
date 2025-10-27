@@ -8,6 +8,7 @@ import { VirtualOffice } from '@components/sections/VirtualOffice'
 import { Amenities } from '@components/sections/Amenities'
 import { Gallery } from '@components/sections/Gallery'
 import { Contact } from '@components/sections/Contact'
+import { SocialMediaWidget } from '@components/ui'
 import './index.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Gallery />
       <Contact />
       <Footer />
+      <SocialMediaWidget />
     </div>
   )
 }

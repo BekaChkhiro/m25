@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
@@ -102,48 +102,83 @@ export const Gallery = () => {
           </div>
         </motion.div>
 
-        {/* Gallery Grid */}
-        <motion.div
-          key={activeFilter}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {filteredImages.slice(0, 24).map((image, index) => (
-            <motion.div
-              key={image.id}
-              variants={itemVariants}
-              className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-white/10 cursor-pointer"
-              onClick={() => openLightbox(index)}
-            >
-              {/* Image */}
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
+        {/* Gallery Grid with Layout Animation */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            layout
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          >
+            {filteredImages.slice(0, 24).map((image, index) => (
+              <motion.div
+                key={image.id}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.02,
+                  layout: { duration: 0.4 }
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  zIndex: 10,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-white/10 cursor-pointer"
+                onClick={() => openLightbox(index)}
+              >
+                {/* Image with clip-path reveal */}
+                <motion.img
+                  src={image.src}
+                  alt={image.alt}
+                  initial={{ clipPath: 'inset(100% 0 0 0)' }}
+                  animate={{ clipPath: 'inset(0% 0 0 0)' }}
+                  transition={{ duration: 0.6, delay: index * 0.02 }}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-bg/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="text-center">
-                  <ZoomIn className="w-8 h-8 text-brand mx-auto mb-2" />
-                  <p className="text-sm font-medium">{image.caption}</p>
-                </div>
-              </div>
+                {/* Overlay with stagger */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-gradient-to-t from-bg/80 via-bg/20 to-transparent flex items-center justify-center"
+                >
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-center"
+                  >
+                    <ZoomIn className="w-8 h-8 text-brand mx-auto mb-2" />
+                    <p className="text-sm font-medium">{image.caption}</p>
+                  </motion.div>
+                </motion.div>
 
-              {/* Category Badge */}
-              {activeFilter === 'all' && (
-                <div className="absolute top-3 left-3">
-                  <Badge variant={image.category === 'plan' ? 'brand' : 'default'}>
-                    {image.category}
-                  </Badge>
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+                {/* Category Badge with entrance animation */}
+                {activeFilter === 'all' && (
+                  <motion.div
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.02 + 0.2 }}
+                    className="absolute top-3 left-3"
+                  >
+                    <Badge variant={image.category === 'plan' ? 'brand' : 'default'}>
+                      {image.category}
+                    </Badge>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Load More Info */}
         {filteredImages.length > 24 && (

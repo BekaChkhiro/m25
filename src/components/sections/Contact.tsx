@@ -3,14 +3,18 @@ import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Container, Card, Button, Input } from '@components/ui'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { Container, Card, Button, Input, Map, DateInput } from '@components/ui'
+import { Mail, Phone, MapPin, Send, CheckCircle, Calendar } from 'lucide-react'
 import type { ContactFormData } from '@/types'
 
 const contactSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
+  phone: z.string()
+    .min(8, 'Phone number must be at least 8 digits')
+    .regex(/^[\d\s+()-]+$/, 'Please enter a valid phone number'),
+  preferredDate: z.string().optional(),
   company: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters').optional(),
 })
@@ -117,18 +121,19 @@ export const Contact = () => {
               </Card>
             ))}
 
-            {/* Map placeholder */}
+            {/* Interactive Map */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
+              className="h-64"
             >
-              <Card className="h-48 bg-gradient-to-br from-brand/10 to-accent/10 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-brand mx-auto mb-2" />
-                  <p className="text-sm text-muted">Interactive map coming soon</p>
-                </div>
-              </Card>
+              <Map
+                latitude={41.6938}
+                longitude={44.8015}
+                zoom={16}
+                className="h-full shadow-xl"
+              />
             </motion.div>
           </motion.div>
 
@@ -181,6 +186,34 @@ export const Contact = () => {
                     error={errors.email?.message}
                     disabled={isSubmitting}
                   />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium mb-2 flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      Phone Number *
+                    </label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      {...register('phone')}
+                      placeholder="+995 5XX XXX XXX"
+                      error={errors.phone?.message}
+                      disabled={isSubmitting}
+                    />
+                  </div>
+
+                  <div>
+                    <DateInput
+                      id="preferredDate"
+                      label="Preferred Visit Date"
+                      {...register('preferredDate')}
+                      min={new Date().toISOString().split('T')[0]}
+                      error={errors.preferredDate?.message}
+                      disabled={isSubmitting}
+                    />
+                  </div>
                 </div>
 
                 <div>

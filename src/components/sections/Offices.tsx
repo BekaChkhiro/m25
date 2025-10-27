@@ -1,8 +1,14 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Container, Card, Button, Badge } from '@components/ui'
-import { Check } from 'lucide-react'
+import { Container, Card, Button, Badge, TiltCard } from '@components/ui'
+import { Check, Building2, Users, Building } from 'lucide-react'
 import { officeSizes } from '@data/offices'
+
+const iconMap = {
+  Building2,
+  Users,
+  Building
+}
 
 export const Offices = () => {
   const ref = useRef(null)
@@ -54,42 +60,93 @@ export const Offices = () => {
         >
           {officeSizes.map((office, index) => (
             <motion.div key={office.id} variants={cardVariants}>
-              <Card className="h-full flex flex-col relative overflow-hidden">
-                {/* Decorative gradient */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand/20 to-accent/20 rounded-full blur-3xl -z-10" />
+              <TiltCard tiltStrength={index === 1 ? 20 : 15} enableGlow>
+                <Card className="h-full flex flex-col relative overflow-hidden group">
+                  {/* Decorative gradient */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-brand/20 to-accent/20 rounded-full blur-3xl -z-10" />
 
-                <div className="mb-4">
-                  {index === 1 && (
-                    <Badge variant="brand" className="mb-3">
-                      Most Popular
-                    </Badge>
-                  )}
-                  <h3 className="text-2xl font-bold mb-2 capitalize">{office.id}</h3>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold gradient-text">{office.size}</span>
+                  <div className="mb-4">
+                    {index === 1 && (
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 200,
+                          delay: 0.3
+                        }}
+                      >
+                        <Badge variant="brand" className="mb-3">
+                          Most Popular
+                        </Badge>
+                      </motion.div>
+                    )}
+
+                    {/* Icon Display */}
+                    {office.icon && iconMap[office.icon as keyof typeof iconMap] && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                        animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 200,
+                          delay: 0.2,
+                          duration: 0.8
+                        }}
+                        className="mb-4 w-fit p-4 bg-gradient-to-br from-brand/20 to-accent/20 rounded-2xl backdrop-blur-sm border border-brand/20"
+                      >
+                        {(() => {
+                          const IconComponent = iconMap[office.icon as keyof typeof iconMap]
+                          return <IconComponent className="w-8 h-8 text-brand" />
+                        })()}
+                      </motion.div>
+                    )}
+
+                    <h3 className="text-2xl font-bold mb-2 capitalize">{office.id}</h3>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-4xl font-bold gradient-text">{office.size}</span>
+                    </div>
                   </div>
-                </div>
 
-                <p className="text-muted mb-6 flex-grow">{office.description}</p>
+                  <p className="text-muted mb-6 flex-grow">{office.description}</p>
 
-                <ul className="space-y-3 mb-8">
-                  {office.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <div className="mt-1 shrink-0">
-                        <Check className="w-5 h-5 text-accent" />
-                      </div>
-                      <span className="text-sm text-muted">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  <ul className="space-y-3 mb-8">
+                    {office.features.map((feature, featureIndex) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{
+                          delay: 0.3 + featureIndex * 0.1,
+                          duration: 0.4
+                        }}
+                        className="flex items-start gap-2"
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={isInView ? { scale: 1 } : {}}
+                          transition={{
+                            delay: 0.3 + featureIndex * 0.1,
+                            type: 'spring',
+                            stiffness: 200
+                          }}
+                          className="mt-1 shrink-0"
+                        >
+                          <Check className="w-5 h-5 text-accent" />
+                        </motion.div>
+                        <span className="text-sm text-muted">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
 
-                <Button
-                  variant={index === 1 ? 'primary' : 'secondary'}
-                  className="w-full mt-auto"
-                >
-                  View Details
-                </Button>
-              </Card>
+                  <Button
+                    variant={index === 1 ? 'primary' : 'secondary'}
+                    className="w-full mt-auto"
+                  >
+                    View Details
+                  </Button>
+                </Card>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>

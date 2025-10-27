@@ -13,6 +13,7 @@ const iconMap = {
 
 const AnimatedCounter = ({ value, suffix = '' }: { value: string; suffix?: string }) => {
   const [count, setCount] = useState(0)
+  const [completed, setCompleted] = useState(false)
   const targetValue = parseInt(value)
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
@@ -28,12 +29,21 @@ const AnimatedCounter = ({ value, suffix = '' }: { value: string; suffix?: strin
       const elapsed = currentTime - startTime
       const progress = Math.min(elapsed / duration, 1)
 
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-      setCount(Math.floor(targetValue * easeOutQuart))
+      // Enhanced easing with overshoot for bounce effect
+      const easeOutBack = (x: number): number => {
+        const c1 = 1.70158
+        const c3 = c1 + 1
+        return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2)
+      }
+
+      const currentCount = Math.floor(targetValue * easeOutBack(progress))
+      setCount(currentCount)
 
       if (progress < 1) {
         requestAnimationFrame(animate)
+      } else {
+        setCount(targetValue) // Ensure final value is exact
+        setCompleted(true)
       }
     }
 
@@ -41,9 +51,18 @@ const AnimatedCounter = ({ value, suffix = '' }: { value: string; suffix?: strin
   }, [isInView, targetValue])
 
   return (
-    <span ref={ref}>
+    <motion.span
+      ref={ref}
+      animate={completed ? {
+        scale: [1, 1.1, 1],
+      } : {}}
+      transition={{
+        duration: 0.4,
+        ease: 'easeOut'
+      }}
+    >
       {count.toLocaleString()}{suffix}
-    </span>
+    </motion.span>
   )
 }
 
@@ -97,15 +116,30 @@ export const About = () => {
           animate={isInView ? 'visible' : 'hidden'}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {stats.map((stat) => {
+          {stats.map((stat, index) => {
             const Icon = iconMap[stat.id as keyof typeof iconMap] || Shield
             return (
               <motion.div key={stat.id} variants={itemVariants}>
                 <Card className="text-center">
                   <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-brand/10 rounded-xl">
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 200,
+                        damping: 15,
+                        delay: 0.1 + index * 0.1
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        rotate: [0, -5, 5, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                      className="p-3 bg-brand/10 rounded-xl"
+                    >
                       <Icon className="w-8 h-8 text-brand" />
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="text-4xl font-bold gradient-text mb-2">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />

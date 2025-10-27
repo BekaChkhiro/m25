@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download } from 'lucide-react'
-import { Container } from '@components/ui'
+import { Container, PDFPreviewModal } from '@components/ui'
 import { navigationItems } from '@data/navigation'
 import { useScrollSpy } from '@hooks/useScrollSpy'
+import { useScrollProgress } from '@hooks/useScrollProgress'
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isPDFModalOpen, setIsPDFModalOpen] = useState(false)
 
   const sectionIds = navigationItems.map(item => item.id)
   const activeSection = useScrollSpy(sectionIds, 150)
+  const scrollProgress = useScrollProgress({ smooth: true })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +41,12 @@ export const Navigation = () => {
 
   return (
     <>
+      {/* Scroll Progress Indicator */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand via-accent to-brand origin-left z-[60]"
+        style={{ scaleX: scrollProgress }}
+      />
+
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'glass shadow-lg' : 'bg-transparent'
@@ -79,14 +88,13 @@ export const Navigation = () => {
                 </button>
               ))}
 
-              <a
-                href="/assets/M25-Exclusive-Business-Center.pdf"
-                download
+              <button
+                onClick={() => setIsPDFModalOpen(true)}
                 className="btn btn-primary btn-sm flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
                 Brochure
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -160,27 +168,37 @@ export const Navigation = () => {
                   </ul>
                 </nav>
 
-                {/* Download button */}
+                {/* Brochure button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                   className="mt-8"
                 >
-                  <a
-                    href="/assets/M25-Exclusive-Business-Center.pdf"
-                    download
+                  <button
+                    onClick={() => {
+                      setIsPDFModalOpen(true)
+                      setIsMobileMenuOpen(false)
+                    }}
                     className="btn btn-primary w-full flex items-center justify-center gap-2"
                   >
                     <Download className="w-5 h-5" />
-                    Download Brochure
-                  </a>
+                    View Brochure
+                  </button>
                 </motion.div>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
+
+      {/* PDF Preview Modal */}
+      <PDFPreviewModal
+        isOpen={isPDFModalOpen}
+        onClose={() => setIsPDFModalOpen(false)}
+        pdfUrl="/assets/M25-Exclusive-Business-Center.pdf"
+        fileName="M25 Business Center Brochure.pdf"
+      />
     </>
   )
 }

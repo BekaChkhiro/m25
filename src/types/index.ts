@@ -15,6 +15,7 @@ export interface OfficeSize {
   description: string
   features: string[]
   priceRange?: string
+  icon?: string
 }
 
 export interface Amenity {
@@ -38,6 +39,8 @@ export interface ContactFormData {
   firstName: string
   lastName: string
   email: string
+  phone: string
+  preferredDate?: string
   company?: string
   message?: string
 }

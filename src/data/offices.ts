@@ -7,6 +7,7 @@ export const officeSizes: OfficeSize[] = [
     area: '40-60',
     description: 'Private suites ready for compact teams or executive offices.',
     features: ['Private entrance', 'Veranda access', 'Kitchenette', 'Meeting room access'],
+    icon: 'Building2',
   },
   {
     id: 'standard',
@@ -14,6 +15,7 @@ export const officeSizes: OfficeSize[] = [
     area: '70-120',
     description: 'Spacious layouts perfect for growing teams and collaborative work.',
     features: ['Multiple workstations', 'Conference room', 'Private bathrooms', 'Flexible layouts'],
+    icon: 'Users',
   },
   {
     id: 'premium',
@@ -21,5 +23,6 @@ export const officeSizes: OfficeSize[] = [
     area: '130-200',
     description: 'Full-floor options for established companies needing maximum space.',
     features: ['Entire floor access', 'Custom layouts', 'Multiple meeting rooms', 'Private amenities'],
+    icon: 'Building',
   },
 ]
