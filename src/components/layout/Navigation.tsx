@@ -62,8 +62,12 @@ export const Navigation = () => {
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
             >
-              <a href="#" className="text-2xl font-bold gradient-text">
-                M25
+              <a href="#" className="flex items-center">
+                <img
+                  src="/assets/m25-logo.png"
+                  alt="M25 Business Center"
+                  className="h-8 md:h-10 w-auto"
+                />
               </a>
             </motion.div>
 
