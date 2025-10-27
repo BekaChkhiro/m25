@@ -44,24 +44,25 @@ export const Gallery = () => {
     setLightboxOpen(true)
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  }
+  // Animation variants for gallery items
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.05,
+  //     },
+  //   },
+  // }
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3 },
-    },
-  }
+  // const itemVariants = {
+  //   hidden: { opacity: 0, scale: 0.9 },
+  //   visible: {
+  //     opacity: 1,
+  //     scale: 1,
+  //     transition: { duration: 0.3 },
+  //   },
+  // }
 
   return (
     <section id="gallery" className="section-spacing" ref={ref}>

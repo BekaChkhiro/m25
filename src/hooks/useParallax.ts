@@ -19,12 +19,12 @@ interface ParallaxConfig {
  */
 export function useParallax<T extends HTMLElement>(
   config: ParallaxConfig = {}
-): [RefObject<T>, MotionValue<number>] {
-  const { speed = 0.5, direction = 'vertical', clamp = true } = config
-  const ref = useRef<T>(null)
+): [RefObject<T | null>, MotionValue<number>] {
+  const { speed = 0.5, clamp = true } = config
+  const ref = useRef<T | null>(null)
 
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: ref as RefObject<HTMLElement>,
     offset: ['start end', 'end start']
   })
 

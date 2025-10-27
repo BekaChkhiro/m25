@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Icon, LatLngExpression } from 'leaflet'
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 interface MapProps {
@@ -11,7 +11,7 @@ interface MapProps {
 }
 
 // Fix for default marker icons in React-Leaflet
-const customIcon = new Icon({
+const customIcon = new L.Icon({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
@@ -28,7 +28,7 @@ export const Map = ({
   className = '',
   showPopup = true
 }: MapProps) => {
-  const position: LatLngExpression = [latitude, longitude]
+  const position: [number, number] = [latitude, longitude]
 
   return (
     <div className={`w-full h-full rounded-xl overflow-hidden ${className}`}>

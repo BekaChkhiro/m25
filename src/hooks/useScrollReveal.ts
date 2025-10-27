@@ -13,7 +13,7 @@ interface ScrollRevealConfig {
 }
 
 interface ScrollRevealAnimation {
-  ref: React.RefObject<HTMLElement>
+  ref: React.RefObject<HTMLElement | null>
   initial: Record<string, any>
   animate: Record<string, any>
   transition: Record<string, any>
@@ -39,8 +39,8 @@ export function useScrollReveal(config: ScrollRevealConfig = {}): ScrollRevealAn
     margin = '-100px'
   } = config
 
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once, margin })
+  const ref = useRef<HTMLElement | null>(null)
+  const isInView = useInView(ref as React.RefObject<Element>, { once, margin: margin as any })
 
   const directionVariants: Record<RevealDirection, Record<string, any>> = {
     up: { y: distance },

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useMotionValue, useSpring, type MotionValue } from 'framer-motion'
 
 interface MousePosition {
