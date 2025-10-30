@@ -31,17 +31,22 @@ export const Map = ({
   const position: [number, number] = [latitude, longitude]
 
   return (
-    <div className={`w-full h-full rounded-xl overflow-hidden ${className}`}>
+    <div className={`w-full h-full rounded-xl overflow-hidden relative ${className}`}>
+      {/* Brand color overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#4aa3ff]/15 via-[#0c0f14]/25 to-[#89ffda]/10 z-10 pointer-events-none rounded-xl" />
       <MapContainer
         center={position}
         zoom={zoom}
         scrollWheelZoom={false}
         className="w-full h-full"
-        style={{ minHeight: '250px' }}
+        style={{
+          minHeight: '250px',
+          filter: 'brightness(0.95) contrast(0.9) hue-rotate(195deg) saturate(1.1)'
+        }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
         <Marker position={position} icon={customIcon}>
           {showPopup && (

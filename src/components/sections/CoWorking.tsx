@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Container, Card, Button, GlowingBadge } from '@components/ui'
-import { Users, Wifi, Coffee, Calendar } from 'lucide-react'
+import { Users, Wifi, Coffee, Calendar, Dumbbell } from 'lucide-react'
 
 const features = [
   {
@@ -23,6 +23,11 @@ const features = [
     icon: Calendar,
     title: 'Meeting Room Access',
     description: 'Book meeting rooms and private spaces as needed for client presentations.',
+  },
+  {
+    icon: Dumbbell,
+    title: 'Fitness Center Access',
+    description: 'Full access to our premium gym with modern equipment and facilities.',
   },
 ]
 
@@ -119,7 +124,7 @@ export const CoWorking = () => {
 
           <Card className="glass text-center p-8 md:p-12 relative overflow-visible w-full">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Starting from <span className="gradient-text">$150/month</span>
+              Starting from <span className="gradient-text">$49/month</span>
             </h3>
             <p className="text-muted mb-6 max-w-2xl mx-auto">
               Get access to 60+ workstations, meeting rooms, and premium amenities.

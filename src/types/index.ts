@@ -58,3 +58,13 @@ export interface Stat {
   label: string
   suffix?: string
 }
+
+export interface TeamMember {
+  id: string
+  name: string
+  role: string
+  image?: string
+  bio?: string
+  email?: string
+  linkedin?: string
+}

@@ -6,6 +6,7 @@ export const navigationItems: NavigationItem[] = [
   { id: 'coworking', label: 'Co-Working', href: '#coworking' },
   { id: 'virtual', label: 'Virtual Office', href: '#virtual' },
   { id: 'amenities', label: 'Amenities', href: '#amenities' },
+  { id: 'team', label: 'Team', href: '#team' },
   { id: 'gallery', label: 'Gallery', href: '#gallery' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ]

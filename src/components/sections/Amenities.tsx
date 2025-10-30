@@ -1,12 +1,13 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Container, Card, Badge } from '@components/ui'
-import { Coffee, Dumbbell, UtensilsCrossed, Ruler, Users } from 'lucide-react'
+import { Coffee, Dumbbell, UtensilsCrossed, Ruler, Users, Sparkles } from 'lucide-react'
 import { amenities } from '@data/amenities'
 
 const iconMap = {
   cafe: Coffee,
   gym: Dumbbell,
+  spa: Sparkles,
   restaurant: UtensilsCrossed,
 }
 
@@ -56,7 +57,7 @@ export const Amenities = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {amenities.map((amenity) => {
             const Icon = iconMap[amenity.id as keyof typeof iconMap]

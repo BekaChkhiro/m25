@@ -154,7 +154,7 @@ export const Contact = () => {
                     <Input
                       id="firstName"
                       {...register('firstName')}
-                      placeholder="John"
+                      placeholder="Enter your first name"
                       error={errors.firstName?.message}
                       disabled={isSubmitting}
                     />
@@ -167,7 +167,7 @@ export const Contact = () => {
                     <Input
                       id="lastName"
                       {...register('lastName')}
-                      placeholder="Doe"
+                      placeholder="Enter your last name"
                       error={errors.lastName?.message}
                       disabled={isSubmitting}
                     />
@@ -182,7 +182,7 @@ export const Contact = () => {
                     id="email"
                     type="email"
                     {...register('email')}
-                    placeholder="john@example.com"
+                    placeholder="Enter your email address"
                     error={errors.email?.message}
                     disabled={isSubmitting}
                   />
@@ -198,7 +198,7 @@ export const Contact = () => {
                       id="phone"
                       type="tel"
                       {...register('phone')}
-                      placeholder="+995 5XX XXX XXX"
+                      placeholder="Enter your phone number"
                       error={errors.phone?.message}
                       disabled={isSubmitting}
                     />
@@ -223,7 +223,7 @@ export const Contact = () => {
                   <Input
                     id="company"
                     {...register('company')}
-                    placeholder="Your Company"
+                    placeholder="Enter your company name"
                     disabled={isSubmitting}
                   />
                 </div>
@@ -236,7 +236,7 @@ export const Contact = () => {
                     id="message"
                     {...register('message')}
                     rows={4}
-                    placeholder="Tell us about your requirements..."
+                    placeholder="Please describe your requirements"
                     className="input-field resize-none"
                     disabled={isSubmitting}
                   />

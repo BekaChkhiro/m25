@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Share2, Facebook, Instagram, Linkedin, Mail, X } from 'lucide-react'
+import { Share2, Facebook, Instagram, Linkedin, Mail, X, MessageCircle } from 'lucide-react'
 
 interface SocialLink {
   name: string
@@ -33,6 +33,12 @@ const socialLinks: SocialLink[] = [
     icon: Mail,
     href: 'mailto:info@m25.ge',
     color: '#4AA3FF'
+  },
+  {
+    name: 'WhatsApp',
+    icon: MessageCircle,
+    href: 'https://wa.me/995514012223',
+    color: '#25D366'
   }
 ]
 

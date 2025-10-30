@@ -16,6 +16,13 @@ export const amenities: Amenity[] = [
     capacity: '20 persons',
   },
   {
+    id: 'spa',
+    title: 'Wellness & Spa',
+    description: 'Relaxation and wellness services including massage, sauna, and spa treatments.',
+    size: '150 m²',
+    capacity: '15 persons',
+  },
+  {
     id: 'restaurant',
     title: 'Restaurant',
     description: 'On-site restaurant offering breakfast, lunch, and dinner options.',
