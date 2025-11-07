@@ -23,8 +23,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+995 514 01 22 23',
-    href: 'tel:+995514012223',
+    value: '+995 577 311 043',
+    href: 'tel:+995577311043',
   },
   {
     icon: Mail,
@@ -35,8 +35,8 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Address',
-    value: 'Mtatsminda N 25, Tbilisi',
-    href: 'https://maps.google.com/?q=Mtatsminda+N+25+Tbilisi',
+    value: '25 Mtatsminda St, Tbilisi',
+    href: 'https://maps.google.com/?q=25+Mtatsminda+St,+Tbilisi&hl=en',
   },
 ]
 
@@ -83,8 +83,8 @@ export const Contact = () => {
           className="text-center mb-16"
         >
           <span className="badge mb-4">Contact Us</span>
-          <h2 className="mb-6">
-            <span className="gradient-text">Get in Touch</span>
+          <h2 className="mb-6 text-white">
+            Get in Touch
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Have questions? We'd love to hear from you. Send us a message and we'll

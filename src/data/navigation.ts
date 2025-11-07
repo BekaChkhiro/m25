@@ -9,8 +9,8 @@ export const navigationItems: NavigationItem[] = [
     children: [
       { id: 'offices', label: 'Private Offices', href: '#offices' },
       { id: 'coworking', label: 'Co-Working', href: '#coworking' },
+      { id: 'meeting-rooms', label: 'Meeting & Conference Rooms', href: '#meeting-rooms' },
       { id: 'virtual', label: 'Virtual Offices', href: '#virtual' },
-      { id: 'meeting-rooms', label: 'Meeting & Conference Rooms', href: '#amenities' },
     ]
   },
   { id: 'amenities', label: 'Facilities', href: '#amenities' },

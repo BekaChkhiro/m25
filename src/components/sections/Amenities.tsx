@@ -1,13 +1,14 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Container, Card, Badge } from '@components/ui'
-import { Coffee, Dumbbell, UtensilsCrossed, Ruler, Users, Sparkles } from 'lucide-react'
+import { Container, Card } from '@components/ui'
+import { Coffee, Dumbbell, UtensilsCrossed, Sparkles, Flower } from 'lucide-react'
 import { amenities } from '@data/amenities'
 
 const iconMap = {
   cafe: Coffee,
   gym: Dumbbell,
   spa: Sparkles,
+  yoga: Flower,
   restaurant: UtensilsCrossed,
 }
 
@@ -43,13 +44,12 @@ export const Amenities = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Amenities</span>
-          <h2 className="mb-6">
-            <span className="gradient-text">Premium</span> Facilities
+          <span className="badge mb-4">Facilities</span>
+          <h2 className="mb-6 text-white">
+            A Balance of Business and Well-Being
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
-            Everything you need to work, connect, and recharge without leaving the building.
-            Our world-class amenities are designed for your comfort and productivity.
+            Enjoy the comfort of high-caliber amenities to recharge without leaving the building.
           </p>
         </motion.div>
 
@@ -57,7 +57,7 @@ export const Amenities = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
         >
           {amenities.map((amenity) => {
             const Icon = iconMap[amenity.id as keyof typeof iconMap]
@@ -76,45 +76,11 @@ export const Amenities = () => {
 
                   {/* Content */}
                   <h3 className="text-2xl font-bold text-center mb-3">{amenity.title}</h3>
-                  <p className="text-muted text-center mb-6">{amenity.description}</p>
-
-                  {/* Specs */}
-                  <div className="flex items-center justify-center gap-6 pt-6 border-t border-white/10">
-                    <div className="flex items-center gap-2">
-                      <Ruler className="w-4 h-4 text-accent" />
-                      <span className="text-sm text-muted">{amenity.size}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-accent" />
-                      <span className="text-sm text-muted">{amenity.capacity}</span>
-                    </div>
-                  </div>
+                  <p className="text-muted text-center">{amenity.description}</p>
                 </Card>
               </motion.div>
             )
           })}
-        </motion.div>
-
-        {/* Additional Features */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-16"
-        >
-          <Card className="glass p-8 text-center">
-            <h3 className="text-xl font-bold mb-4">More Amenities Available</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Badge>Meeting Rooms</Badge>
-              <Badge>High-Speed WiFi</Badge>
-              <Badge>Printing Services</Badge>
-              <Badge>24/7 Access</Badge>
-              <Badge>Parking</Badge>
-              <Badge>Reception Services</Badge>
-              <Badge>Event Space</Badge>
-              <Badge>Terrace Access</Badge>
-            </div>
-          </Card>
         </motion.div>
       </Container>
     </section>

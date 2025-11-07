@@ -74,8 +74,8 @@ export const Gallery = () => {
           className="text-center mb-12"
         >
           <span className="badge mb-4">Gallery</span>
-          <h2 className="mb-6">
-            <span className="gradient-text">Visual Tour</span>
+          <h2 className="mb-6 text-white">
+            Visual Tour
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto mb-8">
             Explore our modern business center through detailed floor plans and

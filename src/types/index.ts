@@ -69,3 +69,11 @@ export interface TeamMember {
   email?: string
   linkedin?: string
 }
+
+export interface ConferenceRoom {
+  id: string
+  name: string
+  seats: number
+  description?: string
+  icon?: string
+}

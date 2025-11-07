@@ -69,8 +69,8 @@ export const CoWorking = () => {
           className="text-center mb-16"
         >
           <span className="badge mb-4">CO-WORKING</span>
-          <h2 className="mb-6">
-            Built for <span className="gradient-text">collaboration</span>
+          <h2 className="mb-6 text-white">
+            Built for collaboration
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Join a community of professionals in a modern co-working space — ideal for IT specialists, designers, developers, freelancers, and entrepreneurs.

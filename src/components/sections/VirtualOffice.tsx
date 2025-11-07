@@ -40,8 +40,8 @@ export const VirtualOffice = () => {
           className="text-center mb-16"
         >
           <span className="badge mb-4">Virtual Office</span>
-          <h2 className="mb-6">
-            <span className="gradient-text">A smart solution</span> for professional presence
+          <h2 className="mb-6 text-white">
+            A smart solution for professional presence
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Register your business address in Tbilisi without the cost of a physical office.

@@ -55,14 +55,40 @@ export const presentationImages: GalleryImage[] = Array.from({ length: 21 }, (_,
   category: 'presentation'
 }))
 
-// Render Images (97-188, total 92 images)
-export const renderImages: GalleryImage[] = Array.from({ length: 92 }, (_, i) => ({
-  id: `render-${i + 97}`,
-  src: `/assets/render_p${String(i + 97).padStart(3, '0')}.jpg`,
-  alt: `M25 Architectural Render ${i + 97}`,
-  caption: `Render ${i + 97}`,
-  category: 'render'
-}))
+// Render Images (97-188, total 92 images, with 117 and 118 at the end)
+export const renderImages: GalleryImage[] = [
+  // 97-116 (20 images)
+  ...Array.from({ length: 20 }, (_, i) => ({
+    id: `render-${i + 97}`,
+    src: `/assets/render_p${String(i + 97).padStart(3, '0')}.jpg`,
+    alt: `M25 Architectural Render ${i + 97}`,
+    caption: `Render ${i + 97}`,
+    category: 'render'
+  })),
+  // 119-188 (70 images)
+  ...Array.from({ length: 70 }, (_, i) => ({
+    id: `render-${i + 119}`,
+    src: `/assets/render_p${String(i + 119).padStart(3, '0')}.jpg`,
+    alt: `M25 Architectural Render ${i + 119}`,
+    caption: `Render ${i + 119}`,
+    category: 'render'
+  })),
+  // 117-118 (2 images at the end)
+  {
+    id: 'render-117',
+    src: '/assets/render_p117.jpg',
+    alt: 'M25 Architectural Render 117',
+    caption: 'Render 117',
+    category: 'render'
+  },
+  {
+    id: 'render-118',
+    src: '/assets/render_p118.jpg',
+    alt: 'M25 Architectural Render 118',
+    caption: 'Render 118',
+    category: 'render'
+  }
+]
 
 // All gallery images combined
 export const allGalleryImages: GalleryImage[] = [

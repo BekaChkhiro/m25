@@ -44,8 +44,8 @@ export const About = () => {
           className="text-center mb-16"
         >
           <span className="badge text-xl mb-4">About M25</span>
-          <h2 className="mb-6">
-            Your Business <span className="gradient-text">Headquarters</span>
+          <h2 className="mb-6 text-white">
+            Your Business Headquarters
           </h2>
           <p className="text-2xl text-muted mx-auto">
           M25 is Tbilisi's exclusive business address with refined offices, wellness & gourmet dining. Our mission is to create a new business culture where excellence and well-being come together.

@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Container, Card } from '@components/ui'
-import { Mail, Linkedin, User } from 'lucide-react'
+import { Linkedin, User } from 'lucide-react'
 import { teamMembers } from '@data/team'
 
 export const Team = () => {
@@ -37,8 +37,8 @@ export const Team = () => {
           className="text-center mb-16"
         >
           <span className="badge mb-4">Our Team</span>
-          <h2 className="mb-6">
-            Meet the <span className="gradient-text">Team</span>
+          <h2 className="mb-6 text-white">
+            Meet the Team
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Our dedicated team of professionals is here to ensure your business
@@ -50,7 +50,7 @@ export const Team = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {teamMembers.map((member) => (
             <motion.div key={member.id} variants={cardVariants}>
@@ -85,7 +85,7 @@ export const Team = () => {
 
                 {/* Contact Links */}
                 <div className="flex items-center justify-center gap-3 pt-4 border-t border-white/10">
-                  {member.email && (
+                  {/* {member.email && (
                     <a
                       href={`mailto:${member.email}`}
                       className="p-2 bg-brand/10 rounded-lg hover:bg-brand/20 transition-colors"
@@ -93,7 +93,7 @@ export const Team = () => {
                     >
                       <Mail className="w-4 h-4 text-brand" />
                     </a>
-                  )}
+                  )} */}
                   {member.linkedin && (
                     <a
                       href={member.linkedin}

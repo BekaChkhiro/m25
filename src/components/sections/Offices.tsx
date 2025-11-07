@@ -43,8 +43,8 @@ export const Offices = () => {
           className="text-center mb-16"
         >
           <span className="badge mb-4">Office Spaces</span>
-          <h2 className="mb-6">
-            <span className="gradient-text">Private Offices</span>
+          <h2 className="mb-6 text-white">
+            Private Offices
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Choose from a variety of office sizes designed to accommodate teams of all scales.

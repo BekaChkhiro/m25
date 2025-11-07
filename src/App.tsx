@@ -4,6 +4,7 @@ import { Hero } from '@components/sections/Hero'
 import { About } from '@components/sections/About'
 import { Offices } from '@components/sections/Offices'
 import { CoWorking } from '@components/sections/CoWorking'
+import { MeetingRooms } from '@components/sections/MeetingRooms'
 import { VirtualOffice } from '@components/sections/VirtualOffice'
 import { Amenities } from '@components/sections/Amenities'
 import { Team } from '@components/sections/Team'
@@ -20,6 +21,7 @@ function App() {
       <About />
       <Offices />
       <CoWorking />
+      <MeetingRooms />
       <VirtualOffice />
       <Amenities />
       <Team />
