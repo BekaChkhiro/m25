@@ -1,33 +1,38 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Container, Card, Button, GlowingBadge } from '@components/ui'
-import { Users, Wifi, Coffee, Calendar, Dumbbell } from 'lucide-react'
+import { Container, Card } from '@components/ui'
+import { Users, Wifi, Coffee, Calendar, Dumbbell, Phone } from 'lucide-react'
 
 const features = [
   {
     icon: Users,
     title: 'Flexible Memberships',
-    description: 'Choose from daily, weekly, or monthly plans that fit your schedule and budget.',
-  },
-  {
-    icon: Wifi,
-    title: 'High-Speed Internet',
-    description: 'Lightning-fast fiber connection ensuring seamless video calls and file transfers.',
+    description: 'Select daily, weekly, or monthly plans to suit your schedule.',
   },
   {
     icon: Coffee,
     title: 'Complimentary Refreshments',
-    description: 'Enjoy unlimited coffee, tea, and snacks throughout your workday.',
+    description: 'Enjoy unlimited coffee and tea throughout the day.',
+  },
+  {
+    icon: Phone,
+    title: 'Phone Booths',
+    description: 'Step into soundproof spaces for focused calls.',
   },
   {
     icon: Calendar,
-    title: 'Meeting Room Access',
-    description: 'Book meeting rooms and private spaces as needed for client presentations.',
+    title: 'Meeting Room',
+    description: 'Book private space for meetings or brainstorming.',
   },
   {
     icon: Dumbbell,
-    title: 'Fitness Center Access',
-    description: 'Full access to our premium gym with modern equipment and facilities.',
+    title: 'Fitness Center',
+    description: 'Make the most of our premium gym with modern equipment.',
+  },
+  {
+    icon: Wifi,
+    title: 'High-Speed Internet',
+    description: 'Access reliable fibreoptic connection for smooth online work.',
   },
 ]
 
@@ -63,13 +68,12 @@ export const CoWorking = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Co-Working Space</span>
+          <span className="badge mb-4">CO-WORKING</span>
           <h2 className="mb-6">
-            Work <span className="gradient-text">Collaboratively</span>
+            Built for <span className="gradient-text">collaboration</span>
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
-            Join a vibrant community of professionals in our modern co-working space.
-            Perfect for freelancers, startups, and remote teams seeking flexibility.
+            Join a community of professionals in a modern co-working space — ideal for IT specialists, designers, developers, freelancers, and entrepreneurs.
           </p>
         </motion.div>
 
@@ -94,47 +98,6 @@ export const CoWorking = () => {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative flex flex-col items-center"
-        >
-          {/* Glowing availability badge - Centered above card */}
-          <motion.div
-            initial={{ opacity: 0, y: -30, scale: 0.8 }}
-            animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-            transition={{
-              duration: 0.6,
-              delay: 0.6,
-              type: 'spring',
-              stiffness: 200,
-              damping: 15
-            }}
-            className="mb-6 md:mb-8"
-          >
-            <div className="relative">
-              {/* Glow backdrop for emphasis */}
-              <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full scale-150" />
-              <GlowingBadge count={10} className="relative" />
-            </div>
-          </motion.div>
-
-          <Card className="glass text-center p-8 md:p-12 relative overflow-visible w-full">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Starting from <span className="gradient-text">$49/month</span>
-            </h3>
-            <p className="text-muted mb-6 max-w-2xl mx-auto">
-              Get access to 60+ workstations, meeting rooms, and premium amenities.
-              No long-term contracts required.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">Start Free Trial</Button>
-              <Button variant="secondary" size="lg">View Pricing</Button>
-            </div>
-          </Card>
         </motion.div>
       </Container>
     </section>

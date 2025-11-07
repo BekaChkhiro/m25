@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Container, Card, Button, Badge, TiltCard } from '@components/ui'
-import { Check, Building2, Users, Building } from 'lucide-react'
+import { Container, Card, Button, Badge, TiltCard, GlowingBadge } from '@components/ui'
+import { Building2, Users, Building } from 'lucide-react'
 import { officeSizes } from '@data/offices'
 
 const iconMap = {
@@ -44,7 +44,7 @@ export const Offices = () => {
         >
           <span className="badge mb-4">Office Spaces</span>
           <h2 className="mb-6">
-            <span className="gradient-text">Offices for Rent</span>
+            <span className="gradient-text">Private Offices</span>
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Choose from a variety of office sizes designed to accommodate teams of all scales.
@@ -108,36 +108,7 @@ export const Offices = () => {
                     </div>
                   </div>
 
-                  <p className="text-muted mb-6 flex-grow">{office.description}</p>
-
-                  <ul className="space-y-3 mb-8">
-                    {office.features.map((feature, featureIndex) => (
-                      <motion.li
-                        key={feature}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
-                        transition={{
-                          delay: 0.3 + featureIndex * 0.1,
-                          duration: 0.4
-                        }}
-                        className="flex items-start gap-2"
-                      >
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={isInView ? { scale: 1 } : {}}
-                          transition={{
-                            delay: 0.3 + featureIndex * 0.1,
-                            type: 'spring',
-                            stiffness: 200
-                          }}
-                          className="mt-1 shrink-0"
-                        >
-                          <Check className="w-5 h-5 text-accent" />
-                        </motion.div>
-                        <span className="text-sm text-muted">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
+                  <p className="text-muted mb-8 flex-grow">{office.description}</p>
 
                   <Button
                     variant={index === 1 ? 'primary' : 'secondary'}
@@ -151,10 +122,30 @@ export const Offices = () => {
           ))}
         </motion.div>
 
+        {/* Glowing availability badge - Centered below office cards */}
+        <motion.div
+          initial={{ opacity: 0, y: -30, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{
+            duration: 0.6,
+            delay: 0.6,
+            type: 'spring',
+            stiffness: 200,
+            damping: 15
+          }}
+          className="mt-8 mb-6 md:mb-8 flex justify-center"
+        >
+          <div className="relative">
+            {/* Glow backdrop for emphasis */}
+            <div className="absolute inset-0 bg-orange-500/20 blur-xl rounded-full scale-150" />
+            <GlowingBadge count={10} className="relative" />
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-12 text-center"
         >
           <p className="text-muted mb-6">
