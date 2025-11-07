@@ -33,6 +33,7 @@ export interface NavigationItem {
   href: string
   external?: boolean
   download?: boolean
+  children?: NavigationItem[]
 }
 
 export interface ContactFormData {

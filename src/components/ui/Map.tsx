@@ -2,6 +2,21 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
+// Add custom marker styles
+const markerStyles = `
+  .custom-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+`
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style')
+  styleSheet.textContent = markerStyles
+  document.head.appendChild(styleSheet)
+}
+
 interface MapProps {
   latitude?: number
   longitude?: number
@@ -10,15 +25,20 @@ interface MapProps {
   showPopup?: boolean
 }
 
-// Fix for default marker icons in React-Leaflet
-const customIcon = new L.Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+// Custom marker icon in brand color (#4aa3ff)
+const customIcon = new L.DivIcon({
+  className: 'custom-marker',
+  html: `
+    <div style="position: relative; width: 32px; height: 44px;">
+      <svg width="32" height="44" viewBox="0 0 32 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 0C7.163 0 0 7.163 0 16C0 28 16 44 16 44C16 44 32 28 32 16C32 7.163 24.837 0 16 0Z" fill="#4aa3ff"/>
+        <circle cx="16" cy="16" r="6" fill="white"/>
+      </svg>
+    </div>
+  `,
+  iconSize: [32, 44],
+  iconAnchor: [16, 44],
+  popupAnchor: [0, -44]
 })
 
 export const Map = ({
@@ -33,7 +53,7 @@ export const Map = ({
   return (
     <div className={`w-full h-full rounded-xl overflow-hidden relative ${className}`}>
       {/* Brand color overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#4aa3ff]/15 via-[#0c0f14]/25 to-[#89ffda]/10 z-10 pointer-events-none rounded-xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#4aa3ff]/15 via-[#0c0f14]/25 to-[#4aa3ff]/10 z-10 pointer-events-none rounded-xl" />
       <MapContainer
         center={position}
         zoom={zoom}

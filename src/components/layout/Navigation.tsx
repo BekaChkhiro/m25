@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Download } from 'lucide-react'
+import { Menu, X, Download, ChevronDown } from 'lucide-react'
 import { Container, PDFPreviewModal } from '@components/ui'
 import { navigationItems } from '@data/navigation'
 import { useScrollSpy } from '@hooks/useScrollSpy'
@@ -10,8 +10,11 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
-  const sectionIds = navigationItems.map(item => item.id)
+  const sectionIds = navigationItems.flatMap(item =>
+    item.children ? item.children.map(child => child.id) : item.id
+  )
   const activeSection = useScrollSpy(sectionIds, 150)
   const scrollProgress = useScrollProgress({ smooth: true })
 
@@ -71,27 +74,73 @@ export const Navigation = () => {
               </a>
             </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden lg:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
               {navigationItems.map((item) => (
-                <button
+                <div
                   key={item.id}
-                  onClick={() => handleNavClick(item.href)}
-                  className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand"
+                  className="relative"
+                  onMouseEnter={() => item.children && setOpenDropdown(item.id)}
+                  onMouseLeave={() => item.children && setOpenDropdown(null)}
                 >
-                  <span className={activeSection === item.id ? 'text-brand' : 'text-text'}>
-                    {item.label}
-                  </span>
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand to-accent"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
+                  {item.children ? (
+                    <>
+                      <button
+                        className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand flex items-center gap-1"
+                      >
+                        <span className={activeSection === item.id ? 'text-brand' : 'text-text'}>
+                          {item.label}
+                        </span>
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.id ? 'rotate-180' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {openDropdown === item.id && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute top-full left-0 mt-2 w-56 glass rounded-lg shadow-xl overflow-hidden z-50"
+                          >
+                            {item.children.map((child) => (
+                              <button
+                                key={child.id}
+                                onClick={() => {
+                                  handleNavClick(child.href)
+                                  setOpenDropdown(null)
+                                }}
+                                className="w-full text-left px-4 py-3 text-sm font-medium transition-colors hover:bg-brand/10 hover:text-brand border-b border-white/5 last:border-b-0"
+                              >
+                                {child.label}
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => handleNavClick(item.href)}
+                      className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand"
+                    >
+                      <span className={activeSection === item.id ? 'text-brand' : 'text-text'}>
+                        {item.label}
+                      </span>
+                      {activeSection === item.id && (
+                        <motion.div
+                          layoutId="activeIndicator"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand to-accent"
+                          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        />
+                      )}
+                    </button>
                   )}
-                </button>
+                </div>
               ))}
+            </div>
 
+            {/* Brochure Button - Right Side */}
+            <div className="hidden lg:flex">
               <button
                 onClick={() => setIsPDFModalOpen(true)}
                 className="btn btn-primary btn-sm flex items-center gap-2"
@@ -157,16 +206,53 @@ export const Navigation = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.05 }}
                       >
-                        <button
-                          onClick={() => handleNavClick(item.href)}
-                          className={`w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-all ${
-                            activeSection === item.id
-                              ? 'bg-brand/10 text-brand border-l-2 border-brand'
-                              : 'text-text hover:bg-white/5'
-                          }`}
-                        >
-                          {item.label}
-                        </button>
+                        {item.children ? (
+                          <div>
+                            <button
+                              onClick={() => setOpenDropdown(openDropdown === item.id ? null : item.id)}
+                              className={`w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-all flex items-center justify-between ${
+                                activeSection === item.id
+                                  ? 'bg-brand/10 text-brand border-l-2 border-brand'
+                                  : 'text-text hover:bg-white/5'
+                              }`}
+                            >
+                              {item.label}
+                              <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.id ? 'rotate-180' : ''}`} />
+                            </button>
+                            <AnimatePresence>
+                              {openDropdown === item.id && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="ml-4 mt-2 space-y-1"
+                                >
+                                  {item.children.map((child) => (
+                                    <button
+                                      key={child.id}
+                                      onClick={() => handleNavClick(child.href)}
+                                      className="w-full text-left px-4 py-2 rounded-lg text-base font-medium text-text/80 hover:text-brand hover:bg-white/5 transition-all"
+                                    >
+                                      {child.label}
+                                    </button>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => handleNavClick(item.href)}
+                            className={`w-full text-left px-4 py-3 rounded-lg text-lg font-medium transition-all ${
+                              activeSection === item.id
+                                ? 'bg-brand/10 text-brand border-l-2 border-brand'
+                                : 'text-text hover:bg-white/5'
+                            }`}
+                          >
+                            {item.label}
+                          </button>
+                        )}
                       </motion.li>
                     ))}
                   </ul>

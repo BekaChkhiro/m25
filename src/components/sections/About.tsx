@@ -1,14 +1,14 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import { Container, Card } from '@components/ui'
-import { Building2, Shield, Clock, Car } from 'lucide-react'
+import { Building2, Shield, Clock, Car, Phone, Briefcase, UtensilsCrossed, Heart } from 'lucide-react'
 import { stats } from '@data/stats'
 
 const iconMap = {
   gla: Building2,
   parking: Car,
-  access: Clock,
-  offices: Building2,
+  access: Shield,
+  offices: Phone,
 }
 
 const AnimatedCounter = ({ value, suffix = '' }: { value: string; suffix?: string }) => {
@@ -98,14 +98,12 @@ export const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">About M25</span>
+          <span className="badge text-xl mb-4">About M25</span>
           <h2 className="mb-6">
             Your Business <span className="gradient-text">Headquarters</span>
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
-            M25 Business Center offers premium office solutions in Tbilisi's prime location.
-            From private offices to flexible co-working spaces, we provide everything your
-            business needs to thrive.
+          <p className="text-2xl text-muted mx-auto">
+          M25 is Tbilisi's exclusive business address with refined offices, wellness & gourmet dining. Our mission is to create a new business culture where excellence and well-being come together.
           </p>
         </motion.div>
 
@@ -141,10 +139,9 @@ export const About = () => {
                       <Icon className="w-8 h-8 text-brand" />
                     </motion.div>
                   </div>
-                  <div className="text-4xl font-bold gradient-text mb-2">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  <div className="text-lg font-bold gradient-text">
+                    {stat.label}
                   </div>
-                  <p className="text-sm text-muted">{stat.label}</p>
                 </Card>
               </motion.div>
             )
@@ -159,46 +156,34 @@ export const About = () => {
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           <Card>
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="p-2 bg-accent/10 rounded-lg shrink-0">
-                <Building2 className="w-6 h-6 text-accent" />
+                <Briefcase className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Premium Location</h3>
-                <p className="text-sm text-muted">
-                  Located in Mtatsminda, one of Tbilisi's most prestigious business districts
-                  with excellent accessibility.
-                </p>
+                <h3 className="text-lg font-semibold">WORKING SPACES</h3>
               </div>
             </div>
           </Card>
 
           <Card>
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="p-2 bg-accent/10 rounded-lg shrink-0">
-                <Shield className="w-6 h-6 text-accent" />
+                <UtensilsCrossed className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">24/7 Security</h3>
-                <p className="text-sm text-muted">
-                  Round-the-clock security and access control ensuring a safe working
-                  environment for all tenants.
-                </p>
+                <h3 className="text-lg font-semibold">DINING SPACES</h3>
               </div>
             </div>
           </Card>
 
           <Card>
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="p-2 bg-accent/10 rounded-lg shrink-0">
-                <Clock className="w-6 h-6 text-accent" />
+                <Heart className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-2">Flexible Terms</h3>
-                <p className="text-sm text-muted">
-                  Customizable lease terms from short-term to long-term arrangements to
-                  suit your business needs.
-                </p>
+                <h3 className="text-lg font-semibold">WELLNESS SPACES</h3>
               </div>
             </div>
           </Card>

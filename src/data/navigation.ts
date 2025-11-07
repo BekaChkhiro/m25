@@ -2,11 +2,19 @@ import type { NavigationItem } from '@/types'
 
 export const navigationItems: NavigationItem[] = [
   { id: 'about', label: 'About', href: '#about' },
-  { id: 'offices', label: 'Offices', href: '#offices' },
-  { id: 'coworking', label: 'Co-Working', href: '#coworking' },
-  { id: 'virtual', label: 'Virtual Office', href: '#virtual' },
-  { id: 'amenities', label: 'Amenities', href: '#amenities' },
-  { id: 'team', label: 'Team', href: '#team' },
+  {
+    id: 'services',
+    label: 'Services',
+    href: '#services',
+    children: [
+      { id: 'offices', label: 'Private Offices', href: '#offices' },
+      { id: 'coworking', label: 'Co-Working', href: '#coworking' },
+      { id: 'virtual', label: 'Virtual Offices', href: '#virtual' },
+      { id: 'meeting-rooms', label: 'Meeting & Conference Rooms', href: '#amenities' },
+    ]
+  },
+  { id: 'amenities', label: 'Facilities', href: '#amenities' },
   { id: 'gallery', label: 'Gallery', href: '#gallery' },
+  { id: 'team', label: 'Team', href: '#team' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ]

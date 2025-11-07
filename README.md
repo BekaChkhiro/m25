@@ -86,7 +86,7 @@ public/
 --text: #e9eef7         /* Primary text */
 --muted: #9db0cc        /* Secondary text */
 --brand: #4aa3ff        /* Primary blue */
---accent: #89ffda       /* Accent teal */
+--accent: #4aa3ff       /* Accent blue */
 ```
 
 ### Shadows
@@ -233,7 +233,7 @@ Edit `tailwind.config.js`:
 ```javascript
 colors: {
   brand: '#4aa3ff',  // Change primary color
-  accent: '#89ffda', // Change accent color
+  accent: '#4aa3ff', // Change accent color
 }
 ```
 

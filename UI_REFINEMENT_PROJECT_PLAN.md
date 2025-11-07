@@ -838,7 +838,7 @@ If badge overlaps content above, consider placing it just inside the card:
 
 **Brand Colors:**
 - Primary: `#4aa3ff` (brand)
-- Accent: `#89ffda` (accent)
+- Accent: `#4aa3ff` (accent)
 - Background: `#0c0f14` (bg)
 - Card: `#161b26` (card)
 - Text: `#e9eef7` (text)
@@ -1091,7 +1091,7 @@ This refinement project focuses on three high-impact, low-risk visual improvemen
 ```tsx
 colors: {
   brand: '#4aa3ff',
-  accent: '#89ffda',
+  accent: '#4aa3ff',
   bg: '#0c0f14',
   card: '#161b26',
   text: '#e9eef7',

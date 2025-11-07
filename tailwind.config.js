@@ -13,7 +13,7 @@ export default {
         text: '#e9eef7',
         muted: '#9db0cc',
         brand: '#4aa3ff',
-        accent: '#89ffda',
+        accent: '#4aa3ff',
       },
       borderRadius: {
         card: '18px',
@@ -27,7 +27,7 @@ export default {
       boxShadow: {
         'card': '0 10px 30px rgba(0, 0, 0, 0.35)',
         'glow': '0 0 30px rgba(74, 163, 255, 0.5)',
-        'glow-accent': '0 0 30px rgba(137, 255, 218, 0.5)',
+        'glow-accent': '0 0 30px rgba(74, 163, 255, 0.5)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',

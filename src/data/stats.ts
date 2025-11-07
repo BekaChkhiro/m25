@@ -4,25 +4,25 @@ export const stats: Stat[] = [
   {
     id: 'gla',
     value: '4500',
-    label: 'GLA (Gross Leasable Area)',
+    label: 'GLA',
     suffix: ' m²'
   },
   {
     id: 'parking',
     value: '60',
-    label: 'Parking Spaces',
+    label: 'PARKING',
     suffix: '+'
   },
   {
     id: 'access',
     value: '24',
-    label: '24/7 Access & Security',
+    label: '24/7 SECURITY',
     suffix: '/7'
   },
   {
     id: 'offices',
     value: '30',
-    label: 'Private Offices',
+    label: 'RECEPTION',
     suffix: '+'
   }
 ]
