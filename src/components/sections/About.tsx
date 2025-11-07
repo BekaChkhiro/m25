@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { Container, Card } from '@components/ui'
-import { Building2, Shield, Clock, Car, Phone, Briefcase, UtensilsCrossed, Heart } from 'lucide-react'
+import { Building2, Shield, Car, Phone, Briefcase, UtensilsCrossed, Heart } from 'lucide-react'
 import { stats } from '@data/stats'
 
 const iconMap = {
@@ -9,61 +9,6 @@ const iconMap = {
   parking: Car,
   access: Shield,
   offices: Phone,
-}
-
-const AnimatedCounter = ({ value, suffix = '' }: { value: string; suffix?: string }) => {
-  const [count, setCount] = useState(0)
-  const [completed, setCompleted] = useState(false)
-  const targetValue = parseInt(value)
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  useEffect(() => {
-    if (!isInView) return
-
-    let startTime: number
-    const duration = 2000 // 2 seconds
-
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-
-      // Enhanced easing with overshoot for bounce effect
-      const easeOutBack = (x: number): number => {
-        const c1 = 1.70158
-        const c3 = c1 + 1
-        return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2)
-      }
-
-      const currentCount = Math.floor(targetValue * easeOutBack(progress))
-      setCount(currentCount)
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setCount(targetValue) // Ensure final value is exact
-        setCompleted(true)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [isInView, targetValue])
-
-  return (
-    <motion.span
-      ref={ref}
-      animate={completed ? {
-        scale: [1, 1.1, 1],
-      } : {}}
-      transition={{
-        duration: 0.4,
-        ease: 'easeOut'
-      }}
-    >
-      {count.toLocaleString()}{suffix}
-    </motion.span>
-  )
 }
 
 export const About = () => {
