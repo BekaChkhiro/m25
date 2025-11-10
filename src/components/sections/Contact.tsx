@@ -112,7 +112,7 @@ export const Contact = () => {
                     <div className="flex-1">
                       <p className="text-sm text-muted mb-1">{info.label}</p>
                       <div className="space-y-1">
-                        {info.values.map((item) => (
+                        {info.values?.map((item) => (
                           <a
                             key={item.href}
                             href={item.href}
