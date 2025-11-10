@@ -26,8 +26,9 @@ export const teamMembers: TeamMember[] = [
     id: '4',
     name: 'Ani Mazanishvili',
     role: 'Head of Sales & Marketing',
+    bio: 'Responsible for the commercial strategy and brand development of M25 Business Center, Ani Mazanishvili builds and strengthens enduring relationships with our valued partners',
     email: 'ani@m25.ge',
-    // image: '/images/team/ani.jpg',
+    image: '/ani-mazanishvili.png',
   },
   {
     id: '5',
