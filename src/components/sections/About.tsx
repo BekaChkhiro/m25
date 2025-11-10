@@ -1,7 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Container, Card } from '@components/ui'
-import { Building2, Shield, Car, Phone, Briefcase, UtensilsCrossed, Heart } from 'lucide-react'
+import { Building2, Shield, Car, Phone, Briefcase, UtensilsCrossed, Sparkles } from 'lucide-react'
 import { stats } from '@data/stats'
 
 const iconMap = {
@@ -125,7 +125,7 @@ export const About = () => {
           <Card>
             <div className="flex items-center gap-4">
               <div className="p-2 bg-accent/10 rounded-lg shrink-0">
-                <Heart className="w-6 h-6 text-accent" />
+                <Sparkles className="w-6 h-6 text-accent" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">WELLNESS SPACES</h3>

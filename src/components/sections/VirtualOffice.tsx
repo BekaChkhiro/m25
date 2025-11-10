@@ -41,11 +41,11 @@ export const VirtualOffice = () => {
         >
           <span className="badge mb-4">Virtual Office</span>
           <h2 className="mb-6 text-white">
-            A smart solution for professional presence
+            A Smart Solution For Professional Presence
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Register your business address in Tbilisi without the cost of a physical office.
-            Ideal for remote executives, international companies & growing businesses.
+            Perfect for remote executives, international companies & growing businesses.
           </p>
         </motion.div>
 

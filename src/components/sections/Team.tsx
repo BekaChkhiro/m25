@@ -38,7 +38,7 @@ export const Team = () => {
         >
           <span className="badge mb-4">Our Team</span>
           <h2 className="mb-6 text-white">
-            Meet the Team
+            Meet The Team
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Our dedicated team of professionals is here to ensure your business

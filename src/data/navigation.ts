@@ -7,10 +7,10 @@ export const navigationItems: NavigationItem[] = [
     label: 'Services',
     href: '#services',
     children: [
+      { id: 'virtual', label: 'Virtual Offices', href: '#virtual' },
       { id: 'offices', label: 'Private Offices', href: '#offices' },
       { id: 'coworking', label: 'Co-Working', href: '#coworking' },
       { id: 'meeting-rooms', label: 'Meeting & Conference Rooms', href: '#meeting-rooms' },
-      { id: 'virtual', label: 'Virtual Offices', href: '#virtual' },
     ]
   },
   { id: 'amenities', label: 'Facilities', href: '#amenities' },

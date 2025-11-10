@@ -84,7 +84,7 @@ export const Contact = () => {
         >
           <span className="badge mb-4">Contact Us</span>
           <h2 className="mb-6 text-white">
-            Get in Touch
+            Get In Touch
           </h2>
           <p className="text-lg text-muted max-w-3xl mx-auto">
             Have questions? We'd love to hear from you. Send us a message and we'll

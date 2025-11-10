@@ -4,7 +4,7 @@ export const stats: Stat[] = [
   {
     id: 'gla',
     value: '4500',
-    label: 'GLA',
+    label: '4500 m² GLA',
     suffix: ' m²'
   },
   {
