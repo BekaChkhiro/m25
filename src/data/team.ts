@@ -42,7 +42,8 @@ export const teamMembers: TeamMember[] = [
     id: '6',
     name: 'Julietta Shushanian',
     role: 'Chief Accountant',
+    bio: 'Julietta Shushanian oversees financial operations of M25 business center, ensuring accuracy, transparency, and efficiency across every transaction.',
     email: 'julietta@m25.ge',
-    // image: '/images/team/julietta.jpg',
+    image: '/Julietta-Shushanian.png',
   },
 ]

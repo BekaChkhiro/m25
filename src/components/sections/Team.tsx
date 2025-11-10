@@ -78,7 +78,7 @@ export const Team = () => {
 
                 {/* Bio */}
                 {member.bio && (
-                  <p className="text-sm text-muted text-center mb-4 line-clamp-3">
+                  <p className="text-sm text-muted text-center mb-4">
                     {member.bio}
                   </p>
                 )}
