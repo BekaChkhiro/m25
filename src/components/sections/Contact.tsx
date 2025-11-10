@@ -23,8 +23,10 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+995 577 311 043',
-    href: 'tel:+995577311043',
+    values: [
+      { display: '+995 577 311 043', href: 'tel:+995577311043' },
+      { display: '+44 776 770 1844', href: 'tel:+447767701844' },
+    ],
   },
   {
     icon: Mail,
@@ -102,22 +104,44 @@ export const Contact = () => {
           >
             {contactInfo.map((info) => (
               <Card key={info.label} className="group hover:border-brand/50 transition-colors">
-                <a
-                  href={info.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4"
-                >
-                  <div className="p-3 bg-brand/10 rounded-xl group-hover:bg-brand/20 transition-colors">
-                    <info.icon className="w-5 h-5 text-brand" />
+                {'values' in info ? (
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 bg-brand/10 rounded-xl group-hover:bg-brand/20 transition-colors">
+                      <info.icon className="w-5 h-5 text-brand" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-muted mb-1">{info.label}</p>
+                      <div className="space-y-1">
+                        {info.values.map((item) => (
+                          <a
+                            key={item.href}
+                            href={item.href}
+                            className="block font-medium hover:text-brand transition-colors"
+                          >
+                            {item.display}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted mb-1">{info.label}</p>
-                    <p className="font-medium group-hover:text-brand transition-colors">
-                      {info.value}
-                    </p>
-                  </div>
-                </a>
+                ) : (
+                  <a
+                    href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4"
+                  >
+                    <div className="p-3 bg-brand/10 rounded-xl group-hover:bg-brand/20 transition-colors">
+                      <info.icon className="w-5 h-5 text-brand" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted mb-1">{info.label}</p>
+                      <p className="font-medium group-hover:text-brand transition-colors">
+                        {info.value}
+                      </p>
+                    </div>
+                  </a>
+                )}
               </Card>
             ))}
 

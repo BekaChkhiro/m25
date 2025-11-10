@@ -131,7 +131,7 @@ export const Gallery = () => {
                   zIndex: 10,
                   transition: { duration: 0.2 }
                 }}
-                className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-white/10 cursor-pointer"
+                className="group relative aspect-square overflow-hidden rounded-xl bg-bg border border-white/10 cursor-pointer"
                 onClick={() => openLightbox(index)}
               >
                 {/* Image with clip-path reveal */}
@@ -141,7 +141,7 @@ export const Gallery = () => {
                   initial={{ clipPath: 'inset(100% 0 0 0)' }}
                   animate={{ clipPath: 'inset(0% 0 0 0)' }}
                   transition={{ duration: 0.6, delay: index * 0.02 }}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
 

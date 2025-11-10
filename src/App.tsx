@@ -21,8 +21,8 @@ function App() {
       <About />
       <Offices />
       <CoWorking />
-      <MeetingRooms />
       <VirtualOffice />
+      <MeetingRooms />
       <Amenities />
       <Team />
       <Gallery />
