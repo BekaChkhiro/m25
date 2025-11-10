@@ -32,7 +32,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     id: '5',
-    name: 'Jeremy Guilbert',
+    name: 'Jeremy Guilbert Ensures',
     role: 'Technical Manager',
     bio: 'Jeremy ensures that every technical and operational aspect of the M25 Business Center runs flawlessly for our clients.',
     email: 'jeremy@m25.ge',
