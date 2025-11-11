@@ -11,7 +11,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: '2',
     name: 'Mariam Grdzelishvili',
-    role: 'Director and Head of Finance at M25',
+    role: 'Director and Head of Finance',
     bio: "Responsible for shaping the company's financial strategy and ensuring sustainable growth. She combines strategic vision with strong analytical expertise to drive performance and long-term value.",
     email: 'mariam@m25.ge',
     image: '/mariam-grdzelishvili.png',
@@ -44,7 +44,7 @@ export const teamMembers: TeamMember[] = [
     id: '6',
     name: 'Julietta Shushanian',
     role: 'Chief Accountant',
-    bio: 'Julietta Shushanian oversees financial operations of M25 business center, ensuring accuracy, transparency, and efficiency across every transaction.',
+    bio: 'Julietta Shushanian oversees financial operations of M25 Business Center, ensuring accuracy, transparency, and efficiency across every transaction.',
     email: 'julietta@m25.ge',
     image: '/Julietta-Shushanian.png',
   },
