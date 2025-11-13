@@ -17,9 +17,10 @@ export const Map = ({
 
   return (
     <div className={`w-full h-full rounded-xl overflow-hidden relative ${className}`}>
-      {/* Brand color overlay with stronger effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#4aa3ff]/30 via-[#0c0f14]/40 to-[#4aa3ff]/25 z-10 pointer-events-none rounded-xl mix-blend-multiply" />
-      <div className="absolute inset-0 bg-[#4aa3ff]/15 z-[9] pointer-events-none rounded-xl mix-blend-color" />
+      {/* Dark blue night mode theme - very prominent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/70 via-[#1e3a8a]/60 to-[#1e40af]/55 z-10 pointer-events-none rounded-xl" />
+      <div className="absolute inset-0 bg-[#1d4ed8]/40 z-[11] pointer-events-none rounded-xl mix-blend-color" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0c4a6e]/50 to-transparent z-[12] pointer-events-none rounded-xl" />
       <iframe
         title="M25 Business Center Location"
         src={mapUrl}
@@ -28,7 +29,7 @@ export const Map = ({
         style={{
           border: 0,
           minHeight: '250px',
-          filter: 'brightness(0.85) contrast(1.1) saturate(0.8) hue-rotate(180deg)'
+          filter: 'brightness(0.45) contrast(1.4) saturate(0.4) hue-rotate(210deg) invert(0.1)'
         }}
         allowFullScreen
         loading="lazy"

@@ -26,8 +26,8 @@ const features = [
   },
   {
     icon: Dumbbell,
-    title: 'Fitness Center',
-    description: 'Make the most of our premium gym with modern equipment.',
+    title: 'Wellness Center',
+    description: 'Make the most of our premium gym and sauna with modern equipment.',
   },
   {
     icon: Wifi,
@@ -68,12 +68,14 @@ export const CoWorking = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">CO-WORKING</span>
+          <span className="badge text-xl mb-4">CO-WORKING</span>
           <h2 className="mb-6 text-white">
             Built For Collaboration
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
-            Join a community of professionals in a modern co-working space — ideal for IT specialists, designers, developers, freelancers, and entrepreneurs.
+          <p className="text-xl text-muted mx-auto">
+            Join a community of professionals in a modern co-working space.
+            <br />
+            Ideal for IT specialists, designers, developers, freelancers, and entrepreneurs.
           </p>
         </motion.div>
 

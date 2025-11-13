@@ -36,11 +36,11 @@ export const Team = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Our Team</span>
+          <span className="badge text-xl mb-4">Our Team</span>
           <h2 className="mb-6 text-white">
             Meet The Team
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-muted mx-auto">
             Our dedicated team of professionals is here to ensure your business
             thrives in the perfect environment.
           </p>

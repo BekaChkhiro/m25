@@ -41,11 +41,11 @@ export const MeetingRooms = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">MEETING & CONFERENCE ROOMS</span>
+          <span className="badge text-xl mb-4">MEETING & CONFERENCE ROOMS</span>
           <h2 className="mb-6 text-white">
             Designed for Executive Excellence
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-muted mx-auto">
             Hold your business gathering in refined, fully equipped spaces built for productivity and impact.
           </p>
         </motion.div>

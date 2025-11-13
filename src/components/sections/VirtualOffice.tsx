@@ -39,12 +39,12 @@ export const VirtualOffice = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Virtual Office</span>
+          <span className="badge text-xl mb-4">Virtual Office</span>
           <h2 className="mb-6 text-white">
             A Smart Solution For Professional Presence
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
-            Register your business address in Tbilisi without the cost of a physical office.
+          <p className="text-xl text-muted mx-auto">
+            Register your business address in Tbilisi without the cost of a physical office. <br />
             Perfect for remote executives, international companies & growing businesses.
           </p>
         </motion.div>
@@ -74,7 +74,24 @@ export const VirtualOffice = () => {
               ))}
             </ul>
 
-            <Button className="w-full" size="lg">Get Started</Button>
+            <Button
+              className="w-full"
+              size="lg"
+              onClick={() => {
+                const contactSection = document.querySelector('#contact')
+                if (contactSection) {
+                  const offset = 80
+                  const elementPosition = contactSection.getBoundingClientRect().top
+                  const offsetPosition = elementPosition + window.pageYOffset - offset
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  })
+                }
+              }}
+            >
+              Get Started
+            </Button>
           </Card>
         </motion.div>
 

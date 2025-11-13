@@ -2,24 +2,22 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
-import { Container, Badge } from '@components/ui'
+import { Container } from '@components/ui'
 import { ZoomIn } from 'lucide-react'
 import { floorPlanImages, presentationImages, renderImages } from '@data/galleries'
 import type { GalleryImage } from '@/types'
 
-type GalleryFilter = 'all' | 'plan' | 'presentation' | 'render'
+type GalleryFilter = 'render' | 'plan'
 
 const filters = [
-  { id: 'all' as GalleryFilter, label: 'All Images', count: 119 },
-  { id: 'plan' as GalleryFilter, label: 'Floor Plans', count: 6 },
-  { id: 'presentation' as GalleryFilter, label: 'Presentation', count: 21 },
   { id: 'render' as GalleryFilter, label: 'Renders', count: 92 },
+  { id: 'plan' as GalleryFilter, label: 'Floor Plans', count: 6 },
 ]
 
 export const Gallery = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [activeFilter, setActiveFilter] = useState<GalleryFilter>('all')
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>('render')
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
@@ -29,9 +27,7 @@ export const Gallery = () => {
     ...renderImages,
   ]
 
-  const filteredImages = activeFilter === 'all'
-    ? allImages
-    : allImages.filter(img => img.category === activeFilter)
+  const filteredImages = allImages.filter(img => img.category === activeFilter)
 
   const lightboxSlides = filteredImages.map(img => ({
     src: img.src,
@@ -73,11 +69,11 @@ export const Gallery = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="badge mb-4">Gallery</span>
+          <span className="badge text-xl mb-4">Gallery</span>
           <h2 className="mb-6 text-white">
             Visual Tour
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-muted mx-auto mb-8">
             Explore our modern business center through detailed floor plans and
             architectural renders.
           </p>
@@ -163,19 +159,6 @@ export const Gallery = () => {
                   </motion.div>
                 </motion.div>
 
-                {/* Category Badge with entrance animation */}
-                {activeFilter === 'all' && (
-                  <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.02 + 0.2 }}
-                    className="absolute top-3 left-3"
-                  >
-                    <Badge variant={image.category === 'plan' ? 'brand' : 'default'}>
-                      {image.category}
-                    </Badge>
-                  </motion.div>
-                )}
               </motion.div>
             ))}
           </motion.div>

@@ -25,7 +25,7 @@ const contactInfo = [
     label: 'Phone',
     values: [
       { display: '+995 577 311 043', href: 'tel:+995577311043' },
-      { display: '+44 776 770 1844', href: 'tel:+447767701844' },
+      { display: '+995 514 012 223', href: 'tel:+995514012223' },
     ],
   },
   {
@@ -84,13 +84,13 @@ export const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Contact Us</span>
+          <span className="badge text-xl mb-4">Contact Us</span>
           <h2 className="mb-6 text-white">
             Get In Touch
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
-            Have questions? We'd love to hear from you. Send us a message and we'll
-            respond as soon as possible.
+          <p className="text-xl text-muted mx-auto">
+            Have questions? We'd love to hear from you. <br />
+            Send us a message and we'll respond as soon as possible.
           </p>
         </motion.div>
 
@@ -153,8 +153,8 @@ export const Contact = () => {
               className="h-64"
             >
               <Map
-                latitude={41.6938}
-                longitude={44.8015}
+                latitude={41.69637851998284}
+                longitude={44.79168895440246}
                 zoom={16}
                 className="h-full shadow-xl"
               />

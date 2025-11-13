@@ -24,8 +24,8 @@ function App() {
       <VirtualOffice />
       <MeetingRooms />
       <Amenities />
-      <Team />
       <Gallery />
+      <Team />
       <Contact />
       <Footer />
       <SocialMediaWidget />

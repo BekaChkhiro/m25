@@ -42,12 +42,12 @@ export const Offices = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Office Spaces</span>
+          <span className="badge text-xl mb-4">Office Spaces</span>
           <h2 className="mb-6 text-white">
             Private Offices
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
-            Choose from a variety of office sizes designed to accommodate teams of all scales.
+          <p className="text-xl text-muted mx-auto">
+            Choose from a variety of office sizes designed to accommodate teams of all scales. <br />
             Each space is fully equipped and ready to move in.
           </p>
         </motion.div>
@@ -151,7 +151,21 @@ export const Offices = () => {
           <p className="text-muted mb-6">
             All offices include high-speed internet, climate control, and access to shared amenities
           </p>
-          <Button size="lg">Schedule a Tour</Button>
+          <Button
+            size="lg"
+            onClick={() => {
+              const contactSection = document.getElementById('contact')
+              if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 80 // 80px offset for better view
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: 'smooth'
+                })
+              }
+            }}
+          >
+            Schedule a Tour
+          </Button>
         </motion.div>
       </Container>
     </section>

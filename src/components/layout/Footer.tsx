@@ -1,24 +1,15 @@
+import { useState } from 'react'
 import { Container } from '@components/ui'
-import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
-
-const socialLinks = [
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-]
-
-const quickLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Offices', href: '#offices' },
-  { label: 'Co-Working', href: '#coworking' },
-  { label: 'Virtual Office', href: '#virtual' },
-  { label: 'Amenities', href: '#amenities' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
-]
+import { Mail, Phone, MapPin, ChevronDown } from 'lucide-react'
+import { navigationItems } from '@data/navigation'
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
+
+  const toggleSubmenu = (id: string) => {
+    setOpenSubmenu(openSubmenu === id ? null : id)
+  }
 
   return (
     <footer className="bg-bg-soft border-t border-white/10">
@@ -26,39 +17,55 @@ export const Footer = () => {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">M25</h3>
-            <p className="text-sm text-muted mb-6">
-              Premium business center in the heart of Tbilisi, offering flexible office solutions
-              for modern companies.
-            </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 bg-card rounded-lg hover:bg-brand/10 hover:text-brand transition-colors"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
+            <img
+              src="/assets/m25-logo.png"
+              alt="M25 Business Center"
+              className="h-10 w-auto mb-4"
+            />
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted hover:text-brand transition-colors"
-                  >
-                    {link.label}
-                  </a>
+              {navigationItems.map((item) => (
+                <li key={item.id}>
+                  {item.children ? (
+                    <div>
+                      <button
+                        onClick={() => toggleSubmenu(item.id)}
+                        className="flex items-center justify-start gap-2 w-full text-sm text-muted hover:text-brand transition-colors py-1"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform ${
+                            openSubmenu === item.id ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      {openSubmenu === item.id && (
+                        <ul className="ml-3 mt-1 space-y-1">
+                          {item.children.map((child) => (
+                            <li key={child.id}>
+                              <a
+                                href={child.href}
+                                className="block text-sm text-muted hover:text-brand transition-colors py-1"
+                              >
+                                {child.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="block text-sm text-muted hover:text-brand transition-colors py-1"
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -70,8 +77,14 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                <a href="tel:+995577311043" className="text-sm text-muted hover:text-brand">
+                  +995 577 311 043
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <a href="tel:+995514012223" className="text-sm text-muted hover:text-brand">
-                  +995 514 01 22 23
+                  +995 514 012 223
                 </a>
               </li>
               <li className="flex items-start gap-2">
@@ -90,23 +103,9 @@ export const Footer = () => {
           {/* Business Hours */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Business Hours</h4>
-            <ul className="space-y-2 text-sm text-muted">
-              <li className="flex justify-between">
-                <span>Monday - Friday:</span>
-                <span className="text-text">9:00 - 18:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Saturday:</span>
-                <span className="text-text">10:00 - 16:00</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday:</span>
-                <span className="text-text">Closed</span>
-              </li>
-              <li className="mt-4 pt-4 border-t border-white/10">
-                <span className="text-accent">24/7 Access for Tenants</span>
-              </li>
-            </ul>
+            <div className="text-sm">
+              <span className="text-accent text-xl font-semibold">24/7</span>
+            </div>
           </div>
         </div>
 

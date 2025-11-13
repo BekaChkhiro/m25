@@ -44,11 +44,11 @@ export const Amenities = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge mb-4">Facilities</span>
+          <span className="badge text-xl mb-4">Facilities</span>
           <h2 className="mb-6 text-white">
             A Balance of Business and Well-Being
           </h2>
-          <p className="text-lg text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-muted mx-auto">
             Enjoy the comfort of high-caliber amenities to recharge without leaving the building.
           </p>
         </motion.div>

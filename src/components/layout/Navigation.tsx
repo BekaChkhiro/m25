@@ -86,11 +86,11 @@ export const Navigation = () => {
                   {item.children ? (
                     <>
                       <button
-                        className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand flex items-center gap-1"
+                        className={`relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand flex items-center gap-1 ${
+                          activeSection === item.id ? 'text-brand' : 'text-text'
+                        }`}
                       >
-                        <span className={activeSection === item.id ? 'text-brand' : 'text-text'}>
-                          {item.label}
-                        </span>
+                        {item.label}
                         <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.id ? 'rotate-180' : ''}`} />
                       </button>
                       <AnimatePresence>

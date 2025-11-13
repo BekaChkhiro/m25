@@ -5,8 +5,9 @@ import { Share2, Facebook, Instagram, Linkedin, Mail, X, MessageCircle } from 'l
 interface SocialLink {
   name: string
   icon: typeof Facebook
-  href: string
+  href?: string
   color: string
+  whatsappNumbers?: { label: string; number: string }[]
 }
 
 const socialLinks: SocialLink[] = [
@@ -37,13 +38,17 @@ const socialLinks: SocialLink[] = [
   {
     name: 'WhatsApp',
     icon: MessageCircle,
-    href: 'https://wa.me/995514012223',
-    color: '#25D366'
+    color: '#25D366',
+    whatsappNumbers: [
+      { label: 'Georgia', number: '995577311043' },
+      { label: 'UK', number: '447767701854' }
+    ]
   }
 ]
 
 export const SocialMediaWidget = () => {
   const [isExpanded, setIsExpanded] = useState(false)
+  const [showWhatsAppMenu, setShowWhatsAppMenu] = useState(false)
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
@@ -54,39 +59,112 @@ export const SocialMediaWidget = () => {
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.8 }}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-2 items-end"
           >
-            {socialLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{
-                  scale: 1.1,
-                  boxShadow: `0 8px 30px ${link.color}40`
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 rounded-full flex items-center justify-center bg-card border border-white/10 shadow-lg hover:border-brand/50 transition-all duration-200"
-                style={{
-                  background: `linear-gradient(135deg, ${link.color}15, transparent)`
-                }}
-                aria-label={link.name}
-              >
-                <link.icon className="w-5 h-5" style={{ color: link.color }} />
-              </motion.a>
-            ))}
+            {socialLinks.map((link, index) => {
+              const isWhatsApp = link.name === 'WhatsApp'
+
+              if (isWhatsApp) {
+                return (
+                  <div key={link.name} className="flex flex-row items-center justify-end gap-2">
+                    {/* WhatsApp Number Selection */}
+                    <AnimatePresence>
+                      {showWhatsAppMenu && (
+                        <motion.div
+                          initial={{ opacity: 0, x: -20, scale: 0.8 }}
+                          animate={{ opacity: 1, x: 0, scale: 1 }}
+                          exit={{ opacity: 0, x: -20, scale: 0.8 }}
+                          className="flex flex-row gap-2"
+                        >
+                          {link.whatsappNumbers?.map((wa, waIndex) => (
+                            <motion.a
+                              key={wa.number}
+                              href={`https://wa.me/${wa.number}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -20 }}
+                              transition={{ delay: waIndex * 0.05 }}
+                              whileHover={{
+                                scale: 1.05,
+                                boxShadow: '0 8px 30px #25D36640'
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-4 py-2 rounded-full flex items-center gap-2 bg-card border border-white/10 shadow-lg hover:border-[#25D366]/50 transition-all duration-200 whitespace-nowrap"
+                              style={{
+                                background: 'linear-gradient(135deg, #25D36615, transparent)'
+                              }}
+                            >
+                              <MessageCircle className="w-4 h-4" style={{ color: '#25D366' }} />
+                              <span className="text-sm font-medium">{wa.label}</span>
+                            </motion.a>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* WhatsApp Icon Button */}
+                    <motion.button
+                      onClick={() => setShowWhatsAppMenu(!showWhatsAppMenu)}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{
+                        scale: 1.1,
+                        boxShadow: `0 8px 30px ${link.color}40`
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-12 h-12 rounded-full flex items-center justify-center bg-card border border-white/10 shadow-lg hover:border-brand/50 transition-all duration-200 flex-shrink-0"
+                      style={{
+                        background: `linear-gradient(135deg, ${link.color}15, transparent)`
+                      }}
+                      aria-label={link.name}
+                    >
+                      <link.icon className="w-5 h-5" style={{ color: link.color }} />
+                    </motion.button>
+                  </div>
+                )
+              }
+
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ delay: index * 0.05 }}
+                  whileHover={{
+                    scale: 1.1,
+                    boxShadow: `0 8px 30px ${link.color}40`
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-12 h-12 rounded-full flex items-center justify-center bg-card border border-white/10 shadow-lg hover:border-brand/50 transition-all duration-200"
+                  style={{
+                    background: `linear-gradient(135deg, ${link.color}15, transparent)`
+                  }}
+                  aria-label={link.name}
+                >
+                  <link.icon className="w-5 h-5" style={{ color: link.color }} />
+                </motion.a>
+              )
+            })}
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Toggle Button */}
       <motion.button
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={() => {
+          setIsExpanded(!isExpanded)
+          if (isExpanded) {
+            setShowWhatsAppMenu(false)
+          }
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         animate={{
