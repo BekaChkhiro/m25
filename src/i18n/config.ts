@@ -11,7 +11,7 @@ const pathLanguageDetector = {
   lookup() {
     const path = window.location.pathname
     const langMatch = path.match(/^\/(en|ka)/)
-    return langMatch ? langMatch[1] : null
+    return langMatch ? langMatch[1] : undefined
   }
 }
 
