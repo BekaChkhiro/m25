@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, ChevronDown } from 'lucide-react'
-import { Container, PDFPreviewModal } from '@components/ui'
+import { Container, PDFPreviewModal, LanguageSwitcher } from '@components/ui'
 import { navigationItems } from '@data/navigation'
 import { useScrollSpy } from '@hooks/useScrollSpy'
 import { useScrollProgress } from '@hooks/useScrollProgress'
+import { useTranslation } from 'react-i18next'
 
 export const Navigation = () => {
+  const { t } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false)
@@ -74,7 +76,7 @@ export const Navigation = () => {
               </a>
             </motion.div>
 
-            {/* Desktop Navigation - Centered */}
+            {/* Desktop Navigation & Language Switcher - Centered */}
             <div className="hidden lg:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
               {navigationItems.map((item) => (
                 <div
@@ -90,7 +92,7 @@ export const Navigation = () => {
                           activeSection === item.id ? 'text-brand' : 'text-text'
                         }`}
                       >
-                        {item.label}
+                        {t(item.translationKey || item.label)}
                         <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.id ? 'rotate-180' : ''}`} />
                       </button>
                       <AnimatePresence>
@@ -111,7 +113,7 @@ export const Navigation = () => {
                                 }}
                                 className="w-full text-left px-4 py-3 text-sm font-medium transition-colors hover:bg-brand/10 hover:text-brand border-b border-white/5 last:border-b-0"
                               >
-                                {child.label}
+                                {t(child.translationKey || child.label)}
                               </button>
                             ))}
                           </motion.div>
@@ -124,7 +126,7 @@ export const Navigation = () => {
                       className="relative px-3 py-2 text-sm font-medium transition-colors hover:text-brand"
                     >
                       <span className={activeSection === item.id ? 'text-brand' : 'text-text'}>
-                        {item.label}
+                        {t(item.translationKey || item.label)}
                       </span>
                       {activeSection === item.id && (
                         <motion.div
@@ -137,16 +139,21 @@ export const Navigation = () => {
                   )}
                 </div>
               ))}
+
+              {/* Language Switcher in Center with Menu */}
+              <div className="pl-2 border-l border-white/20">
+                <LanguageSwitcher />
+              </div>
             </div>
 
             {/* Brochure Button - Right Side */}
-            <div className="hidden lg:flex">
+            <div className="hidden lg:flex items-center">
               <button
                 onClick={() => setIsPDFModalOpen(true)}
                 className="btn btn-primary btn-sm flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
-                Brochure
+                {t('nav.brochure')}
               </button>
             </div>
 
@@ -216,7 +223,7 @@ export const Navigation = () => {
                                   : 'text-text hover:bg-white/5'
                               }`}
                             >
-                              {item.label}
+                              {t(item.translationKey || item.label)}
                               <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.id ? 'rotate-180' : ''}`} />
                             </button>
                             <AnimatePresence>
@@ -234,7 +241,7 @@ export const Navigation = () => {
                                       onClick={() => handleNavClick(child.href)}
                                       className="w-full text-left px-4 py-2 rounded-lg text-base font-medium text-text/80 hover:text-brand hover:bg-white/5 transition-all"
                                     >
-                                      {child.label}
+                                      {t(child.translationKey || child.label)}
                                     </button>
                                   ))}
                                 </motion.div>
@@ -250,7 +257,7 @@ export const Navigation = () => {
                                 : 'text-text hover:bg-white/5'
                             }`}
                           >
-                            {item.label}
+                            {t(item.translationKey || item.label)}
                           </button>
                         )}
                       </motion.li>
@@ -258,13 +265,16 @@ export const Navigation = () => {
                   </ul>
                 </nav>
 
-                {/* Brochure button */}
+                {/* Language Switcher & Brochure button */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="mt-8"
+                  className="mt-8 space-y-3"
                 >
+                  <div className="flex justify-center">
+                    <LanguageSwitcher />
+                  </div>
                   <button
                     onClick={() => {
                       setIsPDFModalOpen(true)
@@ -273,7 +283,7 @@ export const Navigation = () => {
                     className="btn btn-primary w-full flex items-center justify-center gap-2"
                   >
                     <Download className="w-5 h-5" />
-                    View Brochure
+                    {t('nav.viewBrochure')}
                   </button>
                 </motion.div>
               </div>

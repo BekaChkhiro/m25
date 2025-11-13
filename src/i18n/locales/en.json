@@ -1,0 +1,256 @@
+{
+  "hero": {
+    "heading": "WHERE AMBITION FINDS ITS SPACE...",
+    "subtitle": "MULTIFUNCTIONAL BUSINESS CENTER",
+    "scroll": "Scroll to explore"
+  },
+  "nav": {
+    "about": "About",
+    "services": "Services",
+    "offices": "Private Offices",
+    "coworking": "Co-Working",
+    "virtual": "Virtual Offices",
+    "meetingRooms": "Meeting & Conference Rooms",
+    "amenities": "Facilities",
+    "gallery": "Gallery",
+    "team": "Team",
+    "contact": "Contact",
+    "brochure": "Brochure",
+    "viewBrochure": "View Brochure"
+  },
+  "about": {
+    "badge": "About M25",
+    "title": "Your Business Headquarters",
+    "description": "M25 is Tbilisi's exclusive business address with refined offices, wellness & gourmet dining.",
+    "mission": "Our mission is to create a new business culture where excellence and well-being come together.",
+    "stats": {
+      "gla": "4500 m² GLA",
+      "parking": "PARKING",
+      "access": "24/7 SECURITY",
+      "reception": "RECEPTION"
+    },
+    "features": {
+      "working": "WORKING SPACES",
+      "dining": "DINING SPACES",
+      "wellness": "WELLNESS SPACES"
+    }
+  },
+  "offices": {
+    "badge": "Private Offices",
+    "title": "Your Exclusive Workspace",
+    "description": "Fully equipped private offices designed for focused work and professional excellence.",
+    "features": {
+      "furniture": "Premium Furniture",
+      "internet": "High-Speed Internet",
+      "privacy": "Complete Privacy",
+      "flexible": "Flexible Terms"
+    },
+    "startingFrom": "Starting from",
+    "month": "month",
+    "bookNow": "Book Now"
+  },
+  "coworking": {
+    "badge": "Co-Working Space",
+    "title": "Collaborate and Connect",
+    "description": "Flexible workspace solutions perfect for freelancers, startups, and remote teams.",
+    "features": {
+      "flexibleMemberships": {
+        "title": "Flexible Memberships",
+        "description": "Select daily, weekly, or monthly plans to suit your schedule."
+      },
+      "refreshments": {
+        "title": "Complimentary Refreshments",
+        "description": "Enjoy unlimited coffee and tea throughout the day."
+      },
+      "phoneBooths": {
+        "title": "Phone Booths",
+        "description": "Step into soundproof spaces for focused calls."
+      },
+      "meetingRoom": {
+        "title": "Meeting Room",
+        "description": "Book private space for meetings or brainstorming."
+      },
+      "wellnessCenter": {
+        "title": "Wellness Center",
+        "description": "Make the most of our premium gym and sauna with modern equipment."
+      },
+      "internet": {
+        "title": "High-Speed Internet",
+        "description": "Access reliable fibreoptic connection for smooth online work."
+      }
+    },
+    "pricingTitle": "Co-Working Plans",
+    "daily": "Daily Pass",
+    "monthly": "Monthly Membership",
+    "dayPass": "Day Pass",
+    "perDay": "per day",
+    "perMonth": "per month",
+    "selectPlan": "Select Plan"
+  },
+  "virtual": {
+    "badge": "Virtual Office",
+    "title": "Professional Business Address",
+    "description": "Establish your business presence in Batumi with our virtual office solutions.",
+    "price": "$49",
+    "perMonth": "/month",
+    "benefits": {
+      "address": "Prestigious business address",
+      "correspondence": "Secured management of your correspondence",
+      "callHandling": "Professional call handling under your company name",
+      "preferentialRates": "Preferential rates for meeting rooms & co-working spaces",
+      "adminSupport": "Hands-on administrative support for day to day business needs"
+    },
+    "features": {
+      "address": "Prestigious Business Address",
+      "mail": "Mail Handling Services",
+      "phone": "Phone Answering",
+      "meeting": "Meeting Room Access"
+    }
+  },
+  "meetingRooms": {
+    "badge": "Meeting & Conference Rooms",
+    "title": "Professional Meeting Spaces",
+    "description": "Fully equipped meeting rooms for productive discussions and presentations.",
+    "bookRoom": "Book Room",
+    "capacity": "Capacity",
+    "people": "people",
+    "perHour": "per hour"
+  },
+  "amenities": {
+    "badge": "Facilities",
+    "title": "Premium Facilities for Your Success",
+    "description": "Everything you need to run your business efficiently and comfortably."
+  },
+  "gallery": {
+    "badge": "Gallery",
+    "title": "Take a Virtual Tour",
+    "description": "Explore our modern workspace through our gallery.",
+    "viewGallery": "View Gallery",
+    "filters": {
+      "renders": "Renders",
+      "floorPlans": "Floor Plans"
+    },
+    "showing": "Showing {{count}} of {{total}} images"
+  },
+  "team": {
+    "badge": "Our Team",
+    "title": "Meet the Team",
+    "description": "The dedicated professionals behind M25 Business Center."
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Get in Touch",
+    "description": "Have questions? We're here to help. Reach out to us today.",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Your Message",
+      "company": "Company",
+      "companyPlaceholder": "Enter your company name",
+      "preferredDate": "Preferred Visit Date",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Business Hours",
+      "weekdays": "Mon - Fri: 9:00 AM - 6:00 PM",
+      "weekend": "Sat: 10:00 AM - 2:00 PM"
+    }
+  },
+  "footer": {
+    "description": "Premium business center in the heart of Batumi, offering world-class office solutions.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "close": "Close",
+    "download": "Download",
+    "only": "Only",
+    "spacesLeft": "spaces left"
+  },
+  "officeData": {
+    "compact": {
+      "name": "Compact",
+      "size": "up to 60 m²",
+      "description": "Tailored for executives or small teams seeking privacy and focus. Includes kitchenette and meeting rooms access."
+    },
+    "standard": {
+      "name": "Standard",
+      "size": "60–120 m²",
+      "description": "Designed for dynamic teams with multiple workstations, kitchenette, access to meeting rooms and a scenic terrace."
+    },
+    "grand": {
+      "name": "Grand",
+      "size": "from 120 m²",
+      "description": "Full-floor exclusivity for larger enterprises, featuring private amenities, multiple workstations, access to meeting rooms and wellness center."
+    }
+  },
+  "amenitiesData": {
+    "cafe": {
+      "title": "Café",
+      "description": "A stylish ground-floor café offering a relaxed and healthy dining experience."
+    },
+    "restaurant": {
+      "title": "Restaurant",
+      "description": "An elegant top-floor venue for executive dinners and networking events."
+    },
+    "gym": {
+      "title": "Gym",
+      "description": "A premium fitness space equipped for high-performance workouts."
+    },
+    "spa": {
+      "title": "Spa",
+      "description": "A calm retreat to rejuvenate & restore balance."
+    },
+    "yoga": {
+      "title": "Yoga Studio",
+      "description": "Designed for mindfulness & holistic well-being."
+    }
+  },
+  "conferenceRooms": {
+    "shota-rustaveli": {
+      "name": "Shota Rustaveli",
+      "description": "Our largest conference room, perfect for company-wide meetings, presentations, and large gatherings."
+    },
+    "napoleon-bonaparte": {
+      "name": "Napoleon Bonaparte",
+      "description": "An intimate space designed for board meetings, team sessions, and executive gatherings."
+    },
+    "vakhtang-gorgasali": {
+      "name": "Vakhtang Gorgasali",
+      "description": "A private setting for small group meetings, interviews, and confidential discussions."
+    },
+    "victor-hugo": {
+      "name": "Victor Hugo",
+      "description": "Ideal for focused team discussions, project planning, and creative brainstorming."
+    }
+  },
+  "teamRoles": {
+    "director": "Director",
+    "directorFinance": "Director and Head of Finance",
+    "propertyManager": "Property Manager",
+    "headSalesMarketing": "Head of Sales & Marketing",
+    "technicalManager": "Technical Manager",
+    "chiefAccountant": "Chief Accountant"
+  },
+  "teamBios": {
+    "mariam": "Responsible for shaping the company's financial strategy and ensuring sustainable growth. She combines strategic vision with strong analytical expertise to drive performance and long-term value.",
+    "nina": "Your primary contact for all leasing enquiries. She ensures every detail from viewing to contracting is managed with a personal, precise, and professional approach.",
+    "ani": "Responsible for the commercial strategy and brand development of M25 Business Center, Ani Mazanishvili builds and strengthens enduring relationships with our valued partners.",
+    "jeremy": "Jeremy Guilbert ensures that every technical and operational aspect of the M25 Business Center runs flawlessly for our clients.",
+    "julietta": "Julietta Shushanian oversees financial operations of M25 Business Center, ensuring accuracy, transparency, and efficiency across every transaction."
+  }
+}

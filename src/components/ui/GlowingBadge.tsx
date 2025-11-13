@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { AlertCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { cn } from '@/utils/cn'
 
 interface GlowingBadgeProps {
@@ -10,9 +11,10 @@ interface GlowingBadgeProps {
 
 export const GlowingBadge = ({
   count,
-  text = 'spaces left',
+  text,
   className
 }: GlowingBadgeProps) => {
+  const { t } = useTranslation()
   return (
     <motion.div
       animate={{
@@ -54,7 +56,7 @@ export const GlowingBadge = ({
         <AlertCircle className="w-5 h-5 text-orange-400 fill-orange-400/20" />
       </motion.div>
       <span className="text-orange-300 font-bold text-sm whitespace-nowrap">
-        Only <span className="text-orange-200 text-base">{count}</span> {text}!
+        {t('common.only')} <span className="text-orange-200 text-base">{count}</span> {text || t('common.spacesLeft')}!
       </span>
     </motion.div>
   )

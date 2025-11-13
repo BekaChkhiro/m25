@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card, Button, Badge, TiltCard, GlowingBadge } from '@components/ui'
 import { Building2, Users, Building } from 'lucide-react'
 import { officeSizes } from '@data/offices'
@@ -11,6 +12,7 @@ const iconMap = {
 }
 
 export const Offices = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -42,13 +44,12 @@ export const Offices = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">Office Spaces</span>
+          <span className="badge text-xl mb-4">{t('offices.badge')}</span>
           <h2 className="mb-6 text-white">
-            Private Offices
+            {t('offices.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Choose from a variety of office sizes designed to accommodate teams of all scales. <br />
-            Each space is fully equipped and ready to move in.
+            {t('offices.description')}
           </p>
         </motion.div>
 
@@ -77,7 +78,7 @@ export const Offices = () => {
                         }}
                       >
                         <Badge variant="brand" className="mb-3">
-                          Most Popular
+                          {t('offices.features.flexible')}
                         </Badge>
                       </motion.div>
                     )}
@@ -102,19 +103,25 @@ export const Offices = () => {
                       </motion.div>
                     )}
 
-                    <h3 className="text-2xl font-bold mb-2 capitalize">{office.id}</h3>
+                    <h3 className="text-2xl font-bold mb-2 capitalize">
+                      {office.translationKey ? t(`${office.translationKey}.name`) : office.id}
+                    </h3>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-bold gradient-text">{office.size}</span>
+                      <span className="text-4xl font-bold gradient-text">
+                        {office.translationKey ? t(`${office.translationKey}.size`) : office.size}
+                      </span>
                     </div>
                   </div>
 
-                  <p className="text-muted mb-8 flex-grow">{office.description}</p>
+                  <p className="text-muted mb-8 flex-grow">
+                    {office.translationKey ? t(`${office.translationKey}.description`) : office.description}
+                  </p>
 
                   <Button
                     variant={index === 1 ? 'primary' : 'secondary'}
                     className="w-full mt-auto"
                   >
-                    View Details
+                    {t('common.learnMore')}
                   </Button>
                 </Card>
               </TiltCard>
@@ -149,7 +156,7 @@ export const Offices = () => {
           className="mt-12 text-center"
         >
           <p className="text-muted mb-6">
-            All offices include high-speed internet, climate control, and access to shared amenities
+            {t('offices.features.internet')}
           </p>
           <Button
             size="lg"
@@ -164,7 +171,7 @@ export const Offices = () => {
               }
             }}
           >
-            Schedule a Tour
+            {t('common.contactUs')}
           </Button>
         </motion.div>
       </Container>

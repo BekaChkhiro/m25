@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Navigation } from '@components/layout/Navigation'
 import { Footer } from '@components/layout/Footer'
 import { Hero } from '@components/sections/Hero'
@@ -11,9 +13,17 @@ import { Team } from '@components/sections/Team'
 import { Gallery } from '@components/sections/Gallery'
 import { Contact } from '@components/sections/Contact'
 import { SocialMediaWidget } from '@components/ui'
+import './i18n/config'
 import './index.css'
 
 function App() {
+  const { i18n } = useTranslation()
+
+  // Update html lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = i18n.language
+  }, [i18n.language])
+
   return (
     <div className="min-h-screen">
       <Navigation />

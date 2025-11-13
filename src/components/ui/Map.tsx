@@ -11,16 +11,11 @@ export const Map = ({
   zoom = 16,
   className = ''
 }: MapProps) => {
-  // Google Maps Embed URL with language set to English
-  // Using coordinates to ensure accurate location
+  // Google Maps Embed with English language (hl=en)
   const mapUrl = `https://maps.google.com/maps?q=${latitude},${longitude}&hl=en&z=${zoom}&output=embed`
 
   return (
-    <div className={`w-full h-full rounded-xl overflow-hidden relative ${className}`}>
-      {/* Dark blue night mode theme - very prominent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628]/70 via-[#1e3a8a]/60 to-[#1e40af]/55 z-10 pointer-events-none rounded-xl" />
-      <div className="absolute inset-0 bg-[#1d4ed8]/40 z-[11] pointer-events-none rounded-xl mix-blend-color" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0c4a6e]/50 to-transparent z-[12] pointer-events-none rounded-xl" />
+    <div className={`w-full h-full rounded-xl overflow-hidden relative ${className}`} style={{ background: '#0c0f14' }}>
       <iframe
         title="M25 Business Center Location"
         src={mapUrl}
@@ -29,11 +24,29 @@ export const Map = ({
         style={{
           border: 0,
           minHeight: '250px',
-          filter: 'brightness(0.45) contrast(1.4) saturate(0.4) hue-rotate(210deg) invert(0.1)'
+          filter: 'invert(90%) hue-rotate(190deg) brightness(0.85) contrast(1.1) saturate(0.9)'
         }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+      />
+
+      {/* Dark overlay to match site background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(12, 15, 20, 0.4) 0%, rgba(18, 23, 34, 0.3) 50%, rgba(12, 15, 20, 0.4) 100%)',
+          mixBlendMode: 'multiply'
+        }}
+      />
+
+      {/* Blue tint overlay to match brand */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'rgba(74, 163, 255, 0.08)',
+          mixBlendMode: 'overlay'
+        }}
       />
     </div>
   )

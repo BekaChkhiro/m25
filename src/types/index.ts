@@ -16,6 +16,7 @@ export interface OfficeSize {
   features: string[]
   priceRange?: string
   icon?: string
+  translationKey?: string
 }
 
 export interface Amenity {
@@ -25,6 +26,7 @@ export interface Amenity {
   size?: string
   capacity?: string
   icon?: string
+  translationKey?: string
 }
 
 export interface NavigationItem {
@@ -33,6 +35,7 @@ export interface NavigationItem {
   href: string
   external?: boolean
   download?: boolean
+  translationKey?: string
   children?: NavigationItem[]
 }
 
@@ -58,6 +61,7 @@ export interface Stat {
   value: string
   label: string
   suffix?: string
+  translationKey?: string
 }
 
 export interface TeamMember {
@@ -68,6 +72,8 @@ export interface TeamMember {
   bio?: string
   email?: string
   linkedin?: string
+  roleKey?: string
+  bioKey?: string
 }
 
 export interface ConferenceRoom {
@@ -76,4 +82,5 @@ export interface ConferenceRoom {
   seats: number
   description?: string
   icon?: string
+  translationKey?: string
 }

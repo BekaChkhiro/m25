@@ -8,6 +8,7 @@ export const officeSizes: OfficeSize[] = [
     description: 'Tailored for executives or small teams seeking privacy and focus. Includes kitchenette and meeting rooms access.',
     features: [],
     icon: 'Building2',
+    translationKey: 'officeData.compact'
   },
   {
     id: 'standard',
@@ -16,6 +17,7 @@ export const officeSizes: OfficeSize[] = [
     description: 'Designed for dynamic teams with multiple workstations, kitchenette, access to meeting rooms and a scenic terrace.',
     features: [],
     icon: 'Users',
+    translationKey: 'officeData.standard'
   },
   {
     id: 'grand',
@@ -24,5 +26,6 @@ export const officeSizes: OfficeSize[] = [
     description: 'Full-floor exclusivity for larger enterprises, featuring private amenities, multiple workstations, access to meeting rooms and wellness center.',
     features: [],
     icon: 'Building',
+    translationKey: 'officeData.grand'
   },
 ]

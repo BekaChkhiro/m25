@@ -1,5 +1,6 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import { Container } from '@components/ui'
@@ -10,11 +11,12 @@ import type { GalleryImage } from '@/types'
 type GalleryFilter = 'render' | 'plan'
 
 const filters = [
-  { id: 'render' as GalleryFilter, label: 'Renders', count: 92 },
-  { id: 'plan' as GalleryFilter, label: 'Floor Plans', count: 6 },
+  { id: 'render' as GalleryFilter, label: 'Renders', translationKey: 'gallery.filters.renders', count: 92 },
+  { id: 'plan' as GalleryFilter, label: 'Floor Plans', translationKey: 'gallery.filters.floorPlans', count: 6 },
 ]
 
 export const Gallery = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [activeFilter, setActiveFilter] = useState<GalleryFilter>('render')
@@ -69,13 +71,12 @@ export const Gallery = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="badge text-xl mb-4">Gallery</span>
+          <span className="badge text-xl mb-4">{t('gallery.badge')}</span>
           <h2 className="mb-6 text-white">
-            Visual Tour
+            {t('gallery.title')}
           </h2>
           <p className="text-xl text-muted mx-auto mb-8">
-            Explore our modern business center through detailed floor plans and
-            architectural renders.
+            {t('gallery.description')}
           </p>
 
           {/* Filter Buttons */}
@@ -92,7 +93,7 @@ export const Gallery = () => {
                     : 'bg-card border border-white/10 text-text hover:border-brand/50'
                 }`}
               >
-                {filter.label}
+                {filter.translationKey ? t(filter.translationKey) : filter.label}
                 <span className="ml-2 text-sm opacity-70">({filter.count})</span>
               </motion.button>
             ))}
@@ -173,10 +174,10 @@ export const Gallery = () => {
             className="mt-12 text-center"
           >
             <p className="text-muted mb-4">
-              Showing 24 of {filteredImages.length} images
+              {t('gallery.showing', { count: 24, total: filteredImages.length })}
             </p>
             <p className="text-sm text-muted">
-              Click any image to view full gallery in lightbox
+              {t('gallery.viewGallery')}
             </p>
           </motion.div>
         )}

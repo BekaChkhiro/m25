@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container } from '@components/ui'
 import { Mail, Phone, MapPin, ChevronDown } from 'lucide-react'
 import { navigationItems } from '@data/navigation'
 
 export const Footer = () => {
+  const { t } = useTranslation()
   const currentYear = new Date().getFullYear()
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
 
@@ -26,7 +28,7 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               {navigationItems.map((item) => (
                 <li key={item.id}>
@@ -36,7 +38,7 @@ export const Footer = () => {
                         onClick={() => toggleSubmenu(item.id)}
                         className="flex items-center justify-start gap-2 w-full text-sm text-muted hover:text-brand transition-colors py-1"
                       >
-                        <span>{item.label}</span>
+                        <span>{item.translationKey ? t(item.translationKey) : item.label}</span>
                         <ChevronDown
                           className={`w-4 h-4 transition-transform ${
                             openSubmenu === item.id ? 'rotate-180' : ''
@@ -51,7 +53,7 @@ export const Footer = () => {
                                 href={child.href}
                                 className="block text-sm text-muted hover:text-brand transition-colors py-1"
                               >
-                                {child.label}
+                                {child.translationKey ? t(child.translationKey) : child.label}
                               </a>
                             </li>
                           ))}
@@ -63,7 +65,7 @@ export const Footer = () => {
                       href={item.href}
                       className="block text-sm text-muted hover:text-brand transition-colors py-1"
                     >
-                      {item.label}
+                      {item.translationKey ? t(item.translationKey) : item.label}
                     </a>
                   )}
                 </li>
@@ -73,7 +75,7 @@ export const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('contact.badge')}</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
@@ -102,7 +104,7 @@ export const Footer = () => {
 
           {/* Business Hours */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Business Hours</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('contact.info.hours')}</h4>
             <div className="text-sm">
               <span className="text-accent text-xl font-semibold">24/7</span>
             </div>
@@ -112,16 +114,19 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="py-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted">
-            © {currentYear} M25 Business Center. All rights reserved.
+            © {currentYear} M25 Business Center. {t('footer.rights')}
           </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted hover:text-brand transition-colors">
-              Privacy Policy
+          <p className="text-sm text-muted">
+            Created By{' '}
+            <a
+              href="https://infinity.ge/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand transition-colors"
+            >
+              Infinity Solutions
             </a>
-            <a href="#" className="text-sm text-muted hover:text-brand transition-colors">
-              Terms of Service
-            </a>
-          </div>
+          </p>
         </div>
       </Container>
     </footer>

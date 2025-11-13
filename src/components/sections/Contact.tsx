@@ -1,9 +1,10 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Container, Card, Button, Input, Map, DateInput } from '@components/ui'
+import { Container, Card, Button, Input, DateInput, Map } from '@components/ui'
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
 import type { ContactFormData } from '@/types'
 
@@ -19,34 +20,35 @@ const contactSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters').optional(),
 })
 
-const contactInfo = [
-  {
-    icon: Phone,
-    label: 'Phone',
-    values: [
-      { display: '+995 577 311 043', href: 'tel:+995577311043' },
-      { display: '+995 514 012 223', href: 'tel:+995514012223' },
-    ],
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'info@m25.ge',
-    href: 'mailto:info@m25.ge',
-  },
-  {
-    icon: MapPin,
-    label: 'Address',
-    value: '25 Mtatsminda St, Tbilisi',
-    href: 'https://maps.google.com/?q=25+Mtatsminda+St,+Tbilisi&hl=en',
-  },
-]
-
 export const Contact = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  const contactInfo = [
+    {
+      icon: Phone,
+      label: t('contact.info.phone'),
+      values: [
+        { display: '+995 577 311 043', href: 'tel:+995577311043' },
+        { display: '+995 514 012 223', href: 'tel:+995514012223' },
+      ],
+    },
+    {
+      icon: Mail,
+      label: t('contact.info.email'),
+      value: 'info@m25.ge',
+      href: 'mailto:info@m25.ge',
+    },
+    {
+      icon: MapPin,
+      label: t('contact.info.address'),
+      value: '25 Mtatsminda St, Tbilisi',
+      href: 'https://maps.google.com/?q=25+Mtatsminda+St,+Tbilisi&hl=en',
+    },
+  ]
 
   const {
     register,
@@ -84,13 +86,12 @@ export const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">Contact Us</span>
+          <span className="badge text-xl mb-4">{t('contact.badge')}</span>
           <h2 className="mb-6 text-white">
-            Get In Touch
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Have questions? We'd love to hear from you. <br />
-            Send us a message and we'll respond as soon as possible.
+            {t('contact.description')}
           </p>
         </motion.div>
 
@@ -173,12 +174,12 @@ export const Contact = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                      First Name *
+                      {t('contact.form.name')} *
                     </label>
                     <Input
                       id="firstName"
                       {...register('firstName')}
-                      placeholder="Enter your first name"
+                      placeholder={t('contact.form.name')}
                       error={errors.firstName?.message}
                       disabled={isSubmitting}
                     />
@@ -186,12 +187,12 @@ export const Contact = () => {
 
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                      Last Name *
+                      {t('contact.form.name')} *
                     </label>
                     <Input
                       id="lastName"
                       {...register('lastName')}
-                      placeholder="Enter your last name"
+                      placeholder={t('contact.form.name')}
                       error={errors.lastName?.message}
                       disabled={isSubmitting}
                     />
@@ -200,13 +201,13 @@ export const Contact = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
+                    {t('contact.form.email')} *
                   </label>
                   <Input
                     id="email"
                     type="email"
                     {...register('email')}
-                    placeholder="Enter your email address"
+                    placeholder={t('contact.form.email')}
                     error={errors.email?.message}
                     disabled={isSubmitting}
                   />
@@ -216,13 +217,13 @@ export const Contact = () => {
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium mb-2 flex items-center gap-2">
                       <Phone className="w-4 h-4" />
-                      Phone Number *
+                      {t('contact.form.phone')} *
                     </label>
                     <Input
                       id="phone"
                       type="tel"
                       {...register('phone')}
-                      placeholder="Enter your phone number"
+                      placeholder={t('contact.form.phone')}
                       error={errors.phone?.message}
                       disabled={isSubmitting}
                     />
@@ -231,7 +232,7 @@ export const Contact = () => {
                   <div>
                     <DateInput
                       id="preferredDate"
-                      label="Preferred Visit Date"
+                      label={t('contact.form.preferredDate')}
                       {...register('preferredDate')}
                       min={new Date().toISOString().split('T')[0]}
                       error={errors.preferredDate?.message}
@@ -242,25 +243,25 @@ export const Contact = () => {
 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium mb-2">
-                    Company
+                    {t('contact.form.company')}
                   </label>
                   <Input
                     id="company"
                     {...register('company')}
-                    placeholder="Enter your company name"
+                    placeholder={t('contact.form.companyPlaceholder')}
                     disabled={isSubmitting}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
+                    {t('contact.form.message')}
                   </label>
                   <textarea
                     id="message"
                     {...register('message')}
                     rows={4}
-                    placeholder="Please describe your requirements"
+                    placeholder={t('contact.form.message')}
                     className="input-field resize-none"
                     disabled={isSubmitting}
                   />
@@ -278,12 +279,12 @@ export const Contact = () => {
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      Sending...
+                      {t('contact.form.sending')}
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
                       <Send className="w-5 h-5" />
-                      Send Message
+                      {t('contact.form.send')}
                     </span>
                   )}
                 </Button>
@@ -306,8 +307,8 @@ export const Contact = () => {
                       >
                         <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                       </motion.div>
-                      <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                      <p className="text-muted">We'll get back to you soon.</p>
+                      <h3 className="text-2xl font-bold mb-2">{t('contact.form.send')}</h3>
+                      <p className="text-muted">{t('contact.description')}</p>
                     </div>
                   </motion.div>
                 )}

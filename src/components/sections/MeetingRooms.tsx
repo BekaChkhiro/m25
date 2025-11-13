@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card, Button, TiltCard } from '@components/ui'
 import { Users, Briefcase } from 'lucide-react'
 import { conferenceRooms } from '@data/conferenceRooms'
@@ -10,6 +11,7 @@ const iconMap = {
 }
 
 export const MeetingRooms = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -41,12 +43,12 @@ export const MeetingRooms = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">MEETING & CONFERENCE ROOMS</span>
+          <span className="badge text-xl mb-4">{t('meetingRooms.badge')}</span>
           <h2 className="mb-6 text-white">
-            Designed for Executive Excellence
+            {t('meetingRooms.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Hold your business gathering in refined, fully equipped spaces built for productivity and impact.
+            {t('meetingRooms.description')}
           </p>
         </motion.div>
 
@@ -84,20 +86,24 @@ export const MeetingRooms = () => {
                       </motion.div>
                     )}
 
-                    <h3 className="text-xl font-bold mb-2">{room.name}</h3>
+                    <h3 className="text-xl font-bold mb-2">
+                      {room.translationKey ? t(`${room.translationKey}.name`) : room.name}
+                    </h3>
                     <div className="flex items-baseline gap-2 mb-3">
                       <span className="text-3xl font-bold gradient-text">{room.seats}</span>
-                      <span className="text-muted">seats</span>
+                      <span className="text-muted">{t('meetingRooms.people')}</span>
                     </div>
                   </div>
 
-                  <p className="text-muted mb-6 flex-grow text-sm">{room.description}</p>
+                  <p className="text-muted mb-6 flex-grow text-sm">
+                    {room.translationKey ? t(`${room.translationKey}.description`) : room.description}
+                  </p>
 
                   <Button
                     variant="secondary"
                     className="w-full mt-auto"
                   >
-                    Book Room
+                    {t('meetingRooms.bookRoom')}
                   </Button>
                 </Card>
               </TiltCard>

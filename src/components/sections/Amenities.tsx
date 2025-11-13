@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card } from '@components/ui'
 import { Coffee, Dumbbell, UtensilsCrossed, Sparkles, Flower } from 'lucide-react'
 import { amenities } from '@data/amenities'
@@ -13,6 +14,7 @@ const iconMap = {
 }
 
 export const Amenities = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -44,12 +46,12 @@ export const Amenities = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">Facilities</span>
+          <span className="badge text-xl mb-4">{t('amenities.badge')}</span>
           <h2 className="mb-6 text-white">
-            A Balance of Business and Well-Being
+            {t('amenities.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Enjoy the comfort of high-caliber amenities to recharge without leaving the building.
+            {t('amenities.description')}
           </p>
         </motion.div>
 
@@ -75,8 +77,12 @@ export const Amenities = () => {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-center mb-3">{amenity.title}</h3>
-                  <p className="text-muted text-center">{amenity.description}</p>
+                  <h3 className="text-2xl font-bold text-center mb-3">
+                    {amenity.translationKey ? t(`${amenity.translationKey}.title`) : amenity.title}
+                  </h3>
+                  <p className="text-muted text-center">
+                    {amenity.translationKey ? t(`${amenity.translationKey}.description`) : amenity.description}
+                  </p>
                 </Card>
               </motion.div>
             )

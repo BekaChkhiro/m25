@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card } from '@components/ui'
 import { Building2, Shield, Car, Phone, Briefcase, UtensilsCrossed, Sparkles } from 'lucide-react'
 import { stats } from '@data/stats'
@@ -12,6 +13,7 @@ const iconMap = {
 }
 
 export const About = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -43,13 +45,13 @@ export const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">About M25</span>
+          <span className="badge text-xl mb-4">{t('about.badge')}</span>
           <h2 className="mb-6 text-white">
-            Your Business Headquarters
+            {t('about.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-          M25 is Tbilisi's exclusive business address with refined offices, wellness & gourmet dining. <br />
-          Our mission is to create a new business culture where excellence and well-being come together.
+            {t('about.description')} <br />
+            {t('about.mission')}
           </p>
         </motion.div>
 
@@ -86,7 +88,7 @@ export const About = () => {
                     </motion.div>
                   </div>
                   <div className="text-lg font-bold gradient-text">
-                    {stat.label}
+                    {stat.translationKey ? t(stat.translationKey) : stat.label}
                   </div>
                 </Card>
               </motion.div>
@@ -107,7 +109,7 @@ export const About = () => {
                 <Briefcase className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">WORKING SPACES</h3>
+                <h3 className="text-lg font-semibold">{t('about.features.working')}</h3>
               </div>
             </div>
           </Card>
@@ -118,7 +120,7 @@ export const About = () => {
                 <UtensilsCrossed className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">DINING SPACES</h3>
+                <h3 className="text-lg font-semibold">{t('about.features.dining')}</h3>
               </div>
             </div>
           </Card>
@@ -129,7 +131,7 @@ export const About = () => {
                 <Sparkles className="w-6 h-6 text-accent" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">WELLNESS SPACES</h3>
+                <h3 className="text-lg font-semibold">{t('about.features.wellness')}</h3>
               </div>
             </div>
           </Card>

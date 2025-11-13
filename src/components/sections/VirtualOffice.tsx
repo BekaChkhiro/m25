@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card, Button } from '@components/ui'
 import { MapPin, Mail, Phone, Building2, HeadphonesIcon } from 'lucide-react'
 
@@ -7,26 +8,32 @@ const benefits = [
   {
     icon: MapPin,
     text: 'Prestigious business address',
+    translationKey: 'virtual.benefits.address'
   },
   {
     icon: Mail,
     text: 'Secured management of your correspondence',
+    translationKey: 'virtual.benefits.correspondence'
   },
   {
     icon: Phone,
     text: 'Professional call handling under your company name',
+    translationKey: 'virtual.benefits.callHandling'
   },
   {
     icon: Building2,
     text: 'Preferential rates for meeting rooms & co-working spaces',
+    translationKey: 'virtual.benefits.preferentialRates'
   },
   {
     icon: HeadphonesIcon,
     text: 'Hands-on administrative support for day to day business needs',
+    translationKey: 'virtual.benefits.adminSupport'
   },
 ]
 
 export const VirtualOffice = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -39,13 +46,12 @@ export const VirtualOffice = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">Virtual Office</span>
+          <span className="badge text-xl mb-4">{t('virtual.badge')}</span>
           <h2 className="mb-6 text-white">
-            A Smart Solution For Professional Presence
+            {t('virtual.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Register your business address in Tbilisi without the cost of a physical office. <br />
-            Perfect for remote executives, international companies & growing businesses.
+            {t('virtual.description')}
           </p>
         </motion.div>
 
@@ -57,10 +63,10 @@ export const VirtualOffice = () => {
           className="max-w-2xl mx-auto mb-12"
         >
           <Card className="glass p-8">
-            <h3 className="text-2xl font-bold mb-2">Premium Package</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('virtual.title')}</h3>
             <div className="flex items-baseline gap-2 mb-6">
-              <span className="text-4xl font-bold gradient-text">$49</span>
-              <span className="text-muted">/month</span>
+              <span className="text-4xl font-bold gradient-text">{t('virtual.price')}</span>
+              <span className="text-muted">{t('virtual.perMonth')}</span>
             </div>
 
             <ul className="space-y-4 mb-8">
@@ -69,7 +75,9 @@ export const VirtualOffice = () => {
                   <div className="p-2 bg-accent/10 rounded-lg shrink-0">
                     <benefit.icon className="w-4 h-4 text-accent" />
                   </div>
-                  <span className="text-sm leading-relaxed pt-0.5">{benefit.text}</span>
+                  <span className="text-sm leading-relaxed pt-0.5">
+                    {benefit.translationKey ? t(benefit.translationKey) : benefit.text}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -90,7 +98,7 @@ export const VirtualOffice = () => {
                 }
               }}
             >
-              Get Started
+              {t('common.getStarted')}
             </Button>
           </Card>
         </motion.div>
@@ -102,7 +110,7 @@ export const VirtualOffice = () => {
           className="text-center"
         >
           <p className="text-sm text-muted">
-            All packages include a prestigious Tbilisi business address and professional support
+            {t('virtual.features.address')}
           </p>
         </motion.div>
       </Container>

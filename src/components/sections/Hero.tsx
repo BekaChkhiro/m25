@@ -1,8 +1,10 @@
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ChevronDown, Circle } from 'lucide-react'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const Hero = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -18,7 +20,7 @@ export const Hero = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-start overflow-hidden"
+      className="hero-section relative min-h-screen flex items-center justify-start overflow-hidden"
     >
       {/* Background Image with Parallax */}
       <motion.div
@@ -51,7 +53,7 @@ export const Hero = () => {
           >
             <Circle className="w-5 h-5 md:w-6 md:h-6 fill-white text-white flex-shrink-0" />
             <h1 className="text-base md:text-xl lg:text-2xl xl:text-3xl font-bold text-white tracking-tight whitespace-nowrap">
-              WHERE AMBITION FINDS ITS SPACE...
+              {t('hero.heading')}
             </h1>
           </motion.div>
 
@@ -64,7 +66,7 @@ export const Hero = () => {
           >
             <div className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none">M25</div>
             <div className="text-lg md:text-2xl lg:text-3xl xl:text-4xl font-normal text-white/90 leading-tight max-w-xs md:max-w-sm">
-              MULTIFUNCTIONAL BUSINESS CENTER
+              {t('hero.subtitle')}
             </div>
           </motion.div>
 
@@ -83,7 +85,7 @@ export const Hero = () => {
                 document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
               }}
             >
-              <span className="text-sm font-medium">Scroll to explore</span>
+              <span className="text-sm font-medium">{t('hero.scroll')}</span>
               <ChevronDown className="w-6 h-6" />
             </motion.div>
           </motion.div>

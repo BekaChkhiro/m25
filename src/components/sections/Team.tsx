@@ -1,10 +1,12 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Container, Card } from '@components/ui'
 import { Linkedin, User } from 'lucide-react'
 import { teamMembers } from '@data/team'
 
 export const Team = () => {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -36,13 +38,12 @@ export const Team = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="badge text-xl mb-4">Our Team</span>
+          <span className="badge text-xl mb-4">{t('team.badge')}</span>
           <h2 className="mb-6 text-white">
-            Meet The Team
+            {t('team.title')}
           </h2>
           <p className="text-xl text-muted mx-auto">
-            Our dedicated team of professionals is here to ensure your business
-            thrives in the perfect environment.
+            {t('team.description')}
           </p>
         </motion.div>
 
@@ -73,13 +74,15 @@ export const Team = () => {
                 {/* Name and Role */}
                 <div className="text-center mb-4">
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-sm text-brand font-medium">{member.role}</p>
+                  <p className="text-sm text-brand font-medium">
+                    {member.roleKey ? t(member.roleKey) : member.role}
+                  </p>
                 </div>
 
                 {/* Bio */}
-                {member.bio && (
+                {(member.bio || member.bioKey) && (
                   <p className="text-sm text-muted text-center mb-4">
-                    {member.bio}
+                    {member.bioKey ? t(member.bioKey) : member.bio}
                   </p>
                 )}
 

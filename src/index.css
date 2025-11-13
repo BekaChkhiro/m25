@@ -185,3 +185,168 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Georgian language font size adjustments */
+html[lang="ka"] {
+  /* Reduce base font size */
+  font-size: 15px;
+}
+
+html[lang="ka"] h1 {
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+}
+
+html[lang="ka"] h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+html[lang="ka"] h3 {
+  font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+}
+
+html[lang="ka"] h4 {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+html[lang="ka"] .text-xl {
+  font-size: 1.15rem;
+}
+
+html[lang="ka"] .text-2xl {
+  font-size: 1.4rem;
+}
+
+html[lang="ka"] .text-3xl {
+  font-size: 1.75rem;
+}
+
+html[lang="ka"] .text-4xl {
+  font-size: 2.1rem;
+}
+
+html[lang="ka"] .text-5xl {
+  font-size: 2.8rem;
+}
+
+html[lang="ka"] .badge {
+  font-size: 0.8rem;
+}
+
+html[lang="ka"] p {
+  font-size: 0.95rem;
+}
+
+html[lang="ka"] button {
+  font-size: 0.9rem;
+}
+
+html[lang="ka"] .btn {
+  font-size: 0.9rem;
+}
+
+html[lang="ka"] .text-sm {
+  font-size: 0.8rem;
+}
+
+html[lang="ka"] .text-base {
+  font-size: 0.95rem;
+}
+
+html[lang="ka"] .text-lg {
+  font-size: 1.05rem;
+}
+
+html[lang="ka"] nav {
+  font-size: 0.9rem;
+}
+
+html[lang="ka"] .input-field {
+  font-size: 0.9rem;
+}
+
+html[lang="ka"] label {
+  font-size: 0.85rem;
+}
+
+/* Keep Hero section fonts at full size in Georgian */
+html[lang="ka"] section.hero-section,
+html[lang="ka"] section.hero-section * {
+  font-size: revert !important;
+}
+
+html[lang="ka"] section.hero-section h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem) !important;
+}
+
+html[lang="ka"] section.hero-section .text-5xl {
+  font-size: 3rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-7xl {
+  font-size: 4.5rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-8xl {
+  font-size: 6rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-base {
+  font-size: 1rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-xl {
+  font-size: 1.25rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-2xl {
+  font-size: 1.5rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-3xl {
+  font-size: 1.875rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-4xl {
+  font-size: 2.25rem !important;
+}
+
+html[lang="ka"] section.hero-section .text-lg {
+  font-size: 1.125rem !important;
+}
+
+/* Responsive Hero font sizes for Georgian */
+@media (min-width: 768px) {
+  html[lang="ka"] section.hero-section .md\:text-xl {
+    font-size: 1.25rem !important;
+  }
+  html[lang="ka"] section.hero-section .md\:text-2xl {
+    font-size: 1.5rem !important;
+  }
+  html[lang="ka"] section.hero-section .md\:text-3xl {
+    font-size: 1.875rem !important;
+  }
+  html[lang="ka"] section.hero-section .md\:text-7xl {
+    font-size: 4.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  html[lang="ka"] section.hero-section .lg\:text-2xl {
+    font-size: 1.5rem !important;
+  }
+  html[lang="ka"] section.hero-section .lg\:text-3xl {
+    font-size: 1.875rem !important;
+  }
+  html[lang="ka"] section.hero-section .lg\:text-8xl {
+    font-size: 6rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  html[lang="ka"] section.hero-section .xl\:text-3xl {
+    font-size: 1.875rem !important;
+  }
+  html[lang="ka"] section.hero-section .xl\:text-4xl {
+    font-size: 2.25rem !important;
+  }
+}

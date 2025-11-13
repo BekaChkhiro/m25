@@ -7,6 +7,7 @@ export const amenities: Amenity[] = [
     description: 'A stylish ground-floor café offering a relaxed and healthy dining experience.',
     size: '120 m²',
     capacity: '40 seats',
+    translationKey: 'amenitiesData.cafe'
   },
   {
     id: 'restaurant',
@@ -14,6 +15,7 @@ export const amenities: Amenity[] = [
     description: 'An elegant top-floor venue for executive dinners and networking events.',
     size: '180 m²',
     capacity: '60 seats',
+    translationKey: 'amenitiesData.restaurant'
   },
   {
     id: 'gym',
@@ -21,6 +23,7 @@ export const amenities: Amenity[] = [
     description: 'A premium fitness space equipped for high-performance workouts.',
     size: '200 m²',
     capacity: '20 persons',
+    translationKey: 'amenitiesData.gym'
   },
   {
     id: 'spa',
@@ -28,6 +31,7 @@ export const amenities: Amenity[] = [
     description: 'A calm retreat to rejuvenate & restore balance.',
     size: '150 m²',
     capacity: '15 persons',
+    translationKey: 'amenitiesData.spa'
   },
   {
     id: 'yoga',
@@ -35,5 +39,6 @@ export const amenities: Amenity[] = [
     description: 'Designed for mindfulness & holistic well-being.',
     size: '100 m²',
     capacity: '15 persons',
+    translationKey: 'amenitiesData.yoga'
   },
 ]

@@ -7,6 +7,7 @@ export const conferenceRooms: ConferenceRoom[] = [
     seats: 48,
     description: 'Our largest conference room, perfect for company-wide meetings, presentations, and large gatherings.',
     icon: 'Users',
+    translationKey: 'conferenceRooms.shota-rustaveli'
   },
   {
     id: 'napoleon-bonaparte',
@@ -14,6 +15,7 @@ export const conferenceRooms: ConferenceRoom[] = [
     seats: 10,
     description: 'An intimate space designed for board meetings, team sessions, and executive gatherings.',
     icon: 'Briefcase',
+    translationKey: 'conferenceRooms.napoleon-bonaparte'
   },
   {
     id: 'vakhtang-gorgasali',
@@ -21,6 +23,7 @@ export const conferenceRooms: ConferenceRoom[] = [
     seats: 6,
     description: 'A private setting for small group meetings, interviews, and confidential discussions.',
     icon: 'Users',
+    translationKey: 'conferenceRooms.vakhtang-gorgasali'
   },
   {
     id: 'victor-hugo',
@@ -28,5 +31,6 @@ export const conferenceRooms: ConferenceRoom[] = [
     seats: 6,
     description: 'Ideal for focused team discussions, project planning, and creative brainstorming.',
     icon: 'Users',
+    translationKey: 'conferenceRooms.victor-hugo'
   },
 ]
