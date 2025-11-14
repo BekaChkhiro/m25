@@ -5,9 +5,11 @@ export const teamMembers: TeamMember[] = [
     id: '1',
     name: 'David Kiknadze',
     role: 'Director',
+    bio: "As CEO, David Kiknadze drives M25's vision with strong leadership, building strategic partnerships and shaping a dynamic environment where businesses thrive.",
     email: 'david@m25.ge',
-    roleKey: 'teamRoles.director'
-    // image: '/images/team/david.jpg', // Uncomment and add image path when available
+    image: '/david-kiknadze.png',
+    roleKey: 'teamRoles.director',
+    bioKey: 'teamBios.david'
   },
   {
     id: '2',
