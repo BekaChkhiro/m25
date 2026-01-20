@@ -14,19 +14,19 @@ const socialLinks: SocialLink[] = [
   {
     name: 'Facebook',
     icon: Facebook,
-    href: 'https://facebook.com/m25businesscenter',
+    href: 'https://www.facebook.com/profile.php?id=61583792039954',
     color: '#1877F2'
   },
   {
     name: 'Instagram',
     icon: Instagram,
-    href: 'https://instagram.com/m25businesscenter',
+    href: 'https://www.instagram.com/m25businesscenter?igsh=NTdiaWVubHV4OWg5',
     color: '#E4405F'
   },
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    href: 'https://linkedin.com/company/m25',
+    href: 'https://www.linkedin.com/company/m25-multifunctional-business-center/',
     color: '#0A66C2'
   },
   {
