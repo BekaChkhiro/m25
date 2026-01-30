@@ -8,7 +8,8 @@ import { useScrollProgress } from '@hooks/useScrollProgress'
 import { useTranslation } from 'react-i18next'
 
 export const Navigation = () => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const isGeorgian = i18n.language === 'ka'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isPDFModalOpen, setIsPDFModalOpen] = useState(false)
@@ -77,7 +78,7 @@ export const Navigation = () => {
             </motion.div>
 
             {/* Desktop Navigation & Language Switcher - Centered */}
-            <div className="hidden lg:flex items-center gap-6 absolute left-1/2 transform -translate-x-1/2">
+            <div className={`hidden lg:flex items-center absolute left-1/2 transform -translate-x-1/2 ${isGeorgian ? 'gap-1' : 'gap-6'}`}>
               {navigationItems.map((item) => (
                 <div
                   key={item.id}
@@ -147,7 +148,7 @@ export const Navigation = () => {
             </div>
 
             {/* Brochure Button - Right Side */}
-            <div className="hidden lg:flex items-center">
+            <div className="hidden lg:flex items-center ml-10">
               <button
                 onClick={() => setIsPDFModalOpen(true)}
                 className="btn btn-primary btn-sm flex items-center gap-2"
