@@ -58,10 +58,6 @@
         "title": "Flexible Memberships",
         "description": "Select daily, weekly, or monthly plans to suit your schedule."
       },
-      "refreshments": {
-        "title": "Complimentary Refreshments",
-        "description": "Enjoy unlimited coffee and tea throughout the day."
-      },
       "phoneBooths": {
         "title": "Phone Booths",
         "description": "Step into soundproof spaces for focused calls."
@@ -69,10 +65,6 @@
       "meetingRoom": {
         "title": "Meeting Room",
         "description": "Book private space for meetings or brainstorming."
-      },
-      "wellnessCenter": {
-        "title": "Wellness Center",
-        "description": "Make the most of our premium gym and sauna with modern equipment."
       },
       "internet": {
         "title": "High-Speed Internet",
@@ -85,6 +77,9 @@
     "dayPass": "Day Pass",
     "perDay": "per day",
     "perMonth": "per month",
+    "perPerson": "per person",
+    "dailyPrice": "30₾",
+    "monthlyPrice": "400₾",
     "selectPlan": "Select Plan"
   },
   "virtual": {
@@ -128,7 +123,14 @@
     "viewGallery": "View Gallery",
     "filters": {
       "renders": "Renders",
-      "floorPlans": "Floor Plans"
+      "floorPlans": "Floor Plans",
+      "reception": "Reception & Lobby",
+      "views": "Views",
+      "offices": "Private Offices",
+      "coworking": "Co-Working",
+      "gym": "Gym",
+      "spa": "Spa",
+      "meeting": "Meeting Rooms"
     },
     "showing": "Showing {{count}} of {{total}} images"
   },
@@ -189,12 +191,12 @@
     },
     "standard": {
       "name": "Standard",
-      "size": "60–120 m²",
+      "size": "up to 80 m²",
       "description": "Designed for dynamic teams with multiple workstations, kitchenette, access to meeting rooms and a scenic terrace."
     },
     "grand": {
-      "name": "Grand",
-      "size": "from 120 m²",
+      "name": "Full Floor",
+      "size": "up to 500 m²",
       "description": "Full-floor exclusivity for larger enterprises, featuring private amenities, multiple workstations, access to meeting rooms and wellness center."
     }
   },
@@ -214,10 +216,6 @@
     "spa": {
       "title": "Spa",
       "description": "A calm retreat to rejuvenate & restore balance."
-    },
-    "yoga": {
-      "title": "Yoga Studio",
-      "description": "Designed for mindfulness & holistic well-being."
     }
   },
   "conferenceRooms": {

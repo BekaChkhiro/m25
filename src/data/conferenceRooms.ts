@@ -4,7 +4,7 @@ export const conferenceRooms: ConferenceRoom[] = [
   {
     id: 'shota-rustaveli',
     name: 'Shota Rustaveli',
-    seats: 48,
+    seats: 40,
     description: 'Our largest conference room, perfect for company-wide meetings, presentations, and large gatherings.',
     icon: 'Users',
     translationKey: 'conferenceRooms.shota-rustaveli'
@@ -12,7 +12,7 @@ export const conferenceRooms: ConferenceRoom[] = [
   {
     id: 'napoleon-bonaparte',
     name: 'Napoleon Bonaparte',
-    seats: 10,
+    seats: 6,
     description: 'An intimate space designed for board meetings, team sessions, and executive gatherings.',
     icon: 'Briefcase',
     translationKey: 'conferenceRooms.napoleon-bonaparte'
@@ -28,7 +28,7 @@ export const conferenceRooms: ConferenceRoom[] = [
   {
     id: 'victor-hugo',
     name: 'Victor Hugo',
-    seats: 6,
+    seats: 10,
     description: 'Ideal for focused team discussions, project planning, and creative brainstorming.',
     icon: 'Users',
     translationKey: 'conferenceRooms.victor-hugo'

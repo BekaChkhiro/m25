@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Container, Card } from '@components/ui'
-import { Users, Wifi, Coffee, Calendar, Dumbbell, Phone } from 'lucide-react'
+import { Users, Wifi, Calendar, Phone } from 'lucide-react'
 
 const features = [
   {
@@ -10,12 +10,6 @@ const features = [
     title: 'Flexible Memberships',
     description: 'Select daily, weekly, or monthly plans to suit your schedule.',
     translationKey: 'coworking.features.flexibleMemberships'
-  },
-  {
-    icon: Coffee,
-    title: 'Complimentary Refreshments',
-    description: 'Enjoy unlimited coffee and tea throughout the day.',
-    translationKey: 'coworking.features.refreshments'
   },
   {
     icon: Phone,
@@ -28,12 +22,6 @@ const features = [
     title: 'Meeting Room',
     description: 'Book private space for meetings or brainstorming.',
     translationKey: 'coworking.features.meetingRoom'
-  },
-  {
-    icon: Dumbbell,
-    title: 'Wellness Center',
-    description: 'Make the most of our premium gym and sauna with modern equipment.',
-    translationKey: 'coworking.features.wellnessCenter'
   },
   {
     icon: Wifi,
@@ -110,6 +98,35 @@ export const CoWorking = () => {
               </Card>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Pricing Plans */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h3 className="text-2xl font-bold text-center text-white mb-8">
+            {t('coworking.pricingTitle')}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <Card className="text-center">
+              <p className="text-lg font-semibold mb-3">{t('coworking.daily')}</p>
+              <div className="flex items-baseline justify-center gap-1 mb-1">
+                <span className="text-4xl font-bold gradient-text">{t('coworking.dailyPrice')}</span>
+                <span className="text-muted">/ {t('coworking.perDay')}</span>
+              </div>
+              <p className="text-sm text-muted">{t('coworking.perPerson')}</p>
+            </Card>
+            <Card className="text-center">
+              <p className="text-lg font-semibold mb-3">{t('coworking.monthly')}</p>
+              <div className="flex items-baseline justify-center gap-1 mb-1">
+                <span className="text-4xl font-bold gradient-text">{t('coworking.monthlyPrice')}</span>
+                <span className="text-muted">/ {t('coworking.perMonth')}</span>
+              </div>
+              <p className="text-sm text-muted">{t('coworking.perPerson')}</p>
+            </Card>
+          </div>
         </motion.div>
       </Container>
     </section>

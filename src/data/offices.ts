@@ -12,7 +12,7 @@ export const officeSizes: OfficeSize[] = [
   },
   {
     id: 'standard',
-    size: '60–120 m²',
+    size: 'up to 80 m²',
     area: '60-120',
     description: 'Designed for dynamic teams with multiple workstations, kitchenette, access to meeting rooms and a scenic terrace.',
     features: [],
@@ -21,7 +21,7 @@ export const officeSizes: OfficeSize[] = [
   },
   {
     id: 'grand',
-    size: 'from 120 m²',
+    size: 'up to 500 m²',
     area: '120+',
     description: 'Full-floor exclusivity for larger enterprises, featuring private amenities, multiple workstations, access to meeting rooms and wellness center.',
     features: [],

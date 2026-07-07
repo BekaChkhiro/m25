@@ -33,12 +33,4 @@ export const amenities: Amenity[] = [
     capacity: '15 persons',
     translationKey: 'amenitiesData.spa'
   },
-  {
-    id: 'yoga',
-    title: 'Yoga Studio',
-    description: 'Designed for mindfulness & holistic well-being.',
-    size: '100 m²',
-    capacity: '15 persons',
-    translationKey: 'amenitiesData.yoga'
-  },
 ]

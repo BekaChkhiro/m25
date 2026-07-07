@@ -5,12 +5,19 @@ import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import { Container } from '@components/ui'
 import { ZoomIn } from 'lucide-react'
-import { floorPlanImages, presentationImages, renderImages } from '@data/galleries'
+import { floorPlanImages, presentationImages, renderImages, receptionImages, viewsImages, officesImages, coworkingImages, gymImages, spaImages, meetingImages } from '@data/galleries'
 import type { GalleryImage } from '@/types'
 
-type GalleryFilter = 'render' | 'plan'
+type GalleryFilter = 'render' | 'plan' | 'reception' | 'views' | 'offices' | 'coworking' | 'gym' | 'spa' | 'meeting'
 
 const filters = [
+  { id: 'offices' as GalleryFilter, label: 'Private Offices', translationKey: 'gallery.filters.offices', count: officesImages.length },
+  { id: 'coworking' as GalleryFilter, label: 'Co-Working', translationKey: 'gallery.filters.coworking', count: coworkingImages.length },
+  { id: 'meeting' as GalleryFilter, label: 'Meeting Rooms', translationKey: 'gallery.filters.meeting', count: meetingImages.length },
+  { id: 'gym' as GalleryFilter, label: 'Gym', translationKey: 'gallery.filters.gym', count: gymImages.length },
+  { id: 'spa' as GalleryFilter, label: 'Spa', translationKey: 'gallery.filters.spa', count: spaImages.length },
+  { id: 'reception' as GalleryFilter, label: 'Reception & Lobby', translationKey: 'gallery.filters.reception', count: receptionImages.length },
+  { id: 'views' as GalleryFilter, label: 'Views', translationKey: 'gallery.filters.views', count: viewsImages.length },
   { id: 'render' as GalleryFilter, label: 'Renders', translationKey: 'gallery.filters.renders', count: 92 },
   { id: 'plan' as GalleryFilter, label: 'Floor Plans', translationKey: 'gallery.filters.floorPlans', count: 6 },
 ]
@@ -19,7 +26,7 @@ export const Gallery = () => {
   const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [activeFilter, setActiveFilter] = useState<GalleryFilter>('render')
+  const [activeFilter, setActiveFilter] = useState<GalleryFilter>('offices')
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
@@ -27,7 +34,17 @@ export const Gallery = () => {
     ...floorPlanImages,
     ...presentationImages,
     ...renderImages,
+    ...receptionImages,
+    ...viewsImages,
+    ...officesImages,
+    ...coworkingImages,
+    ...gymImages,
+    ...spaImages,
+    ...meetingImages,
   ]
+
+  // Real photographs look best cropped-to-fill; renders/plans keep their original fit
+  const photoCategories = ['reception', 'views', 'offices', 'coworking', 'gym', 'spa', 'meeting']
 
   const filteredImages = allImages.filter(img => img.category === activeFilter)
 
@@ -138,7 +155,7 @@ export const Gallery = () => {
                   initial={{ clipPath: 'inset(100% 0 0 0)' }}
                   animate={{ clipPath: 'inset(0% 0 0 0)' }}
                   transition={{ duration: 0.6, delay: index * 0.02 }}
-                  className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-110"
+                  className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${photoCategories.includes(image.category) ? 'object-cover' : 'object-fill'}`}
                   loading="lazy"
                 />
 

@@ -3,7 +3,7 @@ export interface GalleryImage {
   src: string
   alt: string
   caption?: string
-  category: 'render' | 'plan' | 'detailed' | 'presentation'
+  category: 'render' | 'plan' | 'detailed' | 'presentation' | 'reception' | 'views' | 'offices' | 'coworking' | 'gym' | 'spa' | 'meeting'
   width?: number
   height?: number
 }

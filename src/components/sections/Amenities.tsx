@@ -2,14 +2,13 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Container, Card } from '@components/ui'
-import { Coffee, Dumbbell, UtensilsCrossed, Sparkles, Flower } from 'lucide-react'
+import { Coffee, Dumbbell, UtensilsCrossed, Sparkles } from 'lucide-react'
 import { amenities } from '@data/amenities'
 
 const iconMap = {
   cafe: Coffee,
   gym: Dumbbell,
   spa: Sparkles,
-  yoga: Flower,
   restaurant: UtensilsCrossed,
 }
 
@@ -59,7 +58,7 @@ export const Amenities = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {amenities.map((amenity) => {
             const Icon = iconMap[amenity.id as keyof typeof iconMap]
